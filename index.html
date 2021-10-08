@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>431Web Showcase</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;900&display=swap" rel="stylesheet">
+    <link href="./css/reset.css" rel="stylesheet"></head>
+    <link href="./css/com.css" rel="stylesheet"></head>
+    <link href="./css/style.css" rel="stylesheet"></head>
+</head>
+<body>
+    
+    <header data-scroll-transition="${window}"
+            data-scroll-target=".ts-h-a1"
+            data-scroll-start="0"
+            data-scroll-end="${#(qs=#ts-a-a1).offsetHeight}">
+        <div class="wrapper">
+            <div class="inset">
+                <div id="title" class="title">
+                    <div id="ts-h-a1" class="profile ts-h-a1"   data-before="transform:translate(calc(-50% + ${#(qs=#title).offsetWidth/2}px), calc(-50% + ${#(qs=#ts-a-a1).offsetHeight/4}px)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);"
+                                                                data-after="transform:translate(calc(0% + 0px), calc(-50% + 0px)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);">
+                        <img class="no-touch" src="/img/profile.png">
+                    </div>
+                </div>
+            </h1>
+        </div>
+    </header>
+
+    <article id="ts-a-a1" class="article-top pb24 over-h">
+        <div class="wrapper pt60">
+            <div class="inset">
+                <h1  class="main-section-title flex-box flex-middle flex-center">
+                    <div class="">
+                        <p>Seo Seon's</p>
+                        <p>Portfolio</p>
+                    </div>
+                </h1>
+            </div>
+        </div>
+        <div class="wrapper mt24">
+            <div class="inset flex-box flex-middle flex-center">
+                <a class="main-section-button"  href="https://github.com/bbggkkk"   target="_blank">
+                    <p class="icon-button-text">깃허브</p>
+                    <p class="material-icons">launch</p>
+                </a>
+                <button class="main-section-button" onclick="javascript:window.scroll({top:document.querySelector('#ts-a-a2').offsetTop,behavior:'smooth'});">
+                    <p class="icon-button-text">포트폴리오</p>
+                    <p class="material-icons">navigate_next</p>
+                </button>
+            </div>
+        </div>
+    </article>
+
+    <article    id="ts-a-a2" class="article-top"
+                style="height:200vh;"
+                data-scroll-transition="${window}"
+                data-scroll-target=".item-s2"
+                data-scroll-start="${#(this).offsetTop + 100}"
+                data-scroll-end="${#(this).offsetTop + #(this).offsetHeight - #(de).offsetHeight - 100}">
+        <div    class="item-s2 img-bg over-h"     
+                data-before="clip-path:circle(0%);"
+                data-after="clip-path:circle(71%);">
+            <picture class="no-touch">
+                <img srcset="/img/a2-t-bg@1.jpeg 480w,
+                             /img/a2-t-bg@2.jpeg 960w,
+                             /img/a2-t-bg@3.jpeg 1440w,
+                             /img/a2-t-bg.jpeg 4000w"
+                     src="/img/a2-t-bg@2.jpeg">
+            </picture>
+            <div class="warpper text-wrap">
+                <p id="item-s2-text"        class="item-s2 text"
+                                            data-before="transform:translate(-50%, -50%) scale(1);"
+                                            data-after="transform:translate(-50%, -50%) scale(0.1);">안녕하세요!</p>
+            </div>
+        </div>
+    </article>
+
+    <article    id="ts-a-a3" class="article-top"
+                style="height:200vh;"
+                data-scroll-transition="${window}"
+                data-scroll-target=".item-s3"
+                data-scroll-start="${#(this).offsetTop + 100}"
+                data-scroll-end="${#(this).offsetTop + #(this).offsetHeight - #(de).offsetHeight - 100}">
+        <div    class="item-s3 img-bg over-h"     
+                data-before="clip-path:polygon(50% 0%, 0% 0%, 0% 0%);"
+                data-after="clip-path:polygon(50% -100%, 200% 200%, -100% 200%);">
+            <picture class="no-touch">
+                <img srcset="/img/a3-t-bg@1.jpeg 480w,
+                             /img/a3-t-bg@2.jpeg 960w,
+                             /img/a3-t-bg@3.jpeg 1440w,
+                             /img/a3-t-bg.jpeg 4000w"
+                     src="/img/a3-t-bg@2.jpeg">
+            </picture>
+            <div class="warpper text-wrap">
+                <p id="item-s3-text"        class="item-s3 text"
+                                            data-before="transform:translate(-50%, -50%) scale(1);"
+                                            data-after="transform:translate(-50%, -50%) scale(0.1);">프론트엔드<br/>개발자</p>
+            </div>
+        </div>
+    </article>
+
+    <article    id="ts-a-a4" class="article-top"
+                style="height:200vh;"
+                data-scroll-transition="${window}"
+                data-scroll-target=".item-s4"
+                data-scroll-start="${#(this).offsetTop + 100}"
+                data-scroll-end="${#(this).offsetTop + #(this).offsetHeight - #(de).offsetHeight - 100}">
+        <div    class="item-s4 img-bg over-h"     
+                data-before="clip-path:circle(0%);"
+                data-after="clip-path:circle(71%);">
+            <picture class="no-touch">
+                <img srcset="/img/a4-t-bg@1.jpeg 480w,
+                             /img/a4-t-bg@2.jpeg 960w,
+                             /img/a4-t-bg@3.jpeg 1440w,
+                             /img/a4-t-bg.jpeg 4000w"
+                     src="/img/a4-t-bg@2.jpeg">
+            </picture>
+            <div class="warpper text-wrap">
+                <p id="item-s4-text"        class="item-s4 text"
+                                            data-before="transform:translate(-50%, -50%) scale(1);"
+                                            data-after="transform:translate(-50%, -50%) scale(0.1);">서성일을<br/>소개합니다.</p>
+            </div>
+        </div>
+    </article>
+
+    <article id="ts-a-a5"   class="article-top bg-black">
+        <p class="t-white">HI</p>
+    </article>
+
+    <script src="./js/scroll-transition.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

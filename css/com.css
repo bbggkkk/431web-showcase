@@ -1,5 +1,14 @@
+.mt12 {
+    margin-top:12px !important;
+}
 .mt24 {
     margin-top:24px !important;
+}
+.mt48 {
+    margin-top:48px !important;
+}
+.mt50vh {
+    margin-top:50vh !important;
 }
 
 
@@ -54,6 +63,9 @@
 .h100p {
     height:100%;
 }
+.h50vh {
+    height:50vh;
+}
 .h100vh {
     height:100vh;
 }
@@ -104,6 +116,9 @@
     display:flex;
     justify-content:center;
     align-items:center;
+}
+.flex-fill {
+    flex:1;
 }
 
 .over-h {

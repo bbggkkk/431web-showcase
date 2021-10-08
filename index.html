@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500;900&display=swap" rel="stylesheet">
     <link href="./css/reset.css" rel="stylesheet"></head>
     <link href="./css/com.css" rel="stylesheet"></head>
     <link href="./css/style.css" rel="stylesheet"></head>
@@ -22,11 +22,19 @@
             data-scroll-end="${#(qs=#ts-a-a1).offsetHeight}">
         <div class="wrapper">
             <div class="inset">
-                <div id="title" class="title">
-                    <div id="ts-h-a1" class="profile ts-h-a1"   data-before="transform:translate(calc(-50% + ${#(qs=#title).offsetWidth/2}px), calc(-50% + ${#(qs=#ts-a-a1).offsetHeight/4}px)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);"
-                                                                data-after="transform:translate(calc(0% + 0px), calc(-50% + 0px)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);">
-                        <img class="no-touch" src="/img/profile.png">
+                <div id="title-inset">
+                    <div id="title" class="title button no-button-style" onclick="window.scroll({top:0, behavior:'smooth'});">
+                        <div id="ts-h-a1" class="profile ts-h-a1"   data-before="transform:translate(calc(-50% + ${#(qs=#title-inset).offsetWidth/2}px), calc(-50% + ${#(qs=#ts-a-a1).offsetHeight/4}px)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);"
+                                                                    data-after="transform:translate(calc(0% + 0px), calc(-50% + 0px)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);">
+                            <img class="no-touch" src="/img/profile.png">
+                        </div>
                     </div>
+                    <nav class="menu">
+                        <ul>
+                            <li><button class="button"  onclick="window.scroll({top:document.querySelector('#ts-a-a2').offsetTop + document.querySelector('#ts-a-a2').offsetHeight/2,behavior:'smooth'});">Hello</button></li>
+                            <li><button class="button"  onclick="window.scroll({top:document.querySelector('#ts-a-a5').offsetTop - 60,behavior:'smooth'});">Intro</button></li>
+                        </ul>
+                    </nav>
                 </div>
             </h1>
         </div>
@@ -45,14 +53,14 @@
         </div>
         <div class="wrapper mt24">
             <div class="inset flex-box flex-middle flex-center">
-                <a class="main-section-button"  href="https://github.com/bbggkkk"   target="_blank">
-                    <p class="icon-button-text">깃허브</p>
-                    <p class="material-icons">launch</p>
-                </a>
-                <button class="main-section-button" onclick="javascript:window.scroll({top:document.querySelector('#ts-a-a2').offsetTop,behavior:'smooth'});">
-                    <p class="icon-button-text">포트폴리오</p>
+                <button class="main-section-button" onclick="window.scroll({top:document.querySelector('#ts-a-a5').offsetTop - 60,behavior:'smooth'});;"   style="background:#ffc72c;">
+                    <p class="icon-button-text">Works</p>
                     <p class="material-icons">navigate_next</p>
                 </button>
+                <a class="main-section-button"  href="https://github.com/bbggkkk"   target="_blank"     style="background:#171515; color:#fff;">
+                    <p class="icon-button-text">Github</p>
+                    <p class="material-icons">launch</p>
+                </a>
             </div>
         </div>
     </article>
@@ -129,8 +137,162 @@
         </div>
     </article>
 
-    <article id="ts-a-a5"   class="article-top bg-black">
-        <p class="t-white">HI</p>
+    <article id="ts-a-a5"   class="article-top pt60 bg-black"
+                            data-scroll-transition="${window}"
+                            data-scroll-target=".item-a5-p1"
+                            data-scroll-start="${#(this).offsetTop - #(this).offsetHeight}"
+                            data-scroll-end="${#(this).offsetTop + #(this).offsetHeight}">
+        <div class="wrapper app-icon">
+            <div class="inset">
+                <img class="no-touch item-a5-p1"   src="/img/a5-t-bg.png"   data-before="opacity:0.2; transform:translateY(30%);"
+                                                                            data-after="opacity:1.5; transform:translateY(-30%);">
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="inset flex-box flex-right">
+                <p class="flex-fill"></p>
+                <p class="flex-fill"></p>
+                <div class="flex-fill info-box">
+                    <p  class="t-white section-title item-a5-s1"
+                        data-scroll-transition="${window}"
+                        data-scroll-target=".item-a5-s1"
+                        data-scroll-start="${#(qs=#ts-a-a5).offsetTop - 100}"
+                        data-scroll-end="${#(qs=#ts-a-a5).offsetTop}"
+                        data-before="opacity:0;"
+                        data-after="opacity:1;">Element<br/>Gesture</p>
+    
+                    <p  class="t-white mt24 item-a5-s2"
+                        data-scroll-transition="${window}"
+                        data-scroll-target=".item-a5-s2"
+                        data-scroll-start="${#(qs=#ts-a-a5).offsetTop + 50}"
+                        data-scroll-end="${#(qs=#ts-a-a5).offsetTop + 100}"
+                        data-before="opacity:0;"
+                        data-after="opacity:1;">엘리먼트에 제스쳐를 쉽게 사용하게 해주는 기능을 추가합니다.<br/>타입스크립트를 지원합니다.</p>
+
+                    <div    class="t-white mt48 item-a5-s3 flex-box"
+                            data-scroll-transition="${window}"
+                            data-scroll-target=".item-a5-s3"
+                            data-scroll-start="${#(qs=#ts-a-a5).offsetTop + 150}"
+                            data-scroll-end="${#(qs=#ts-a-a5).offsetTop + 200}"
+                            data-before="opacity:0;"
+                            data-after="opacity:1;">
+                        <a class="main-section-button"    href="https://github.com/bbggkkk/Element-Gesture"   target="_blank">
+                            <p class="icon-button-text">깃허브에서 보기</p>
+                            <p class="material-icons">launch</p>
+                        </a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="h50vh"></p>
+    </article>
+
+    <article id="ts-a-a6"   class="article-top pt60 bg-black"
+                            data-scroll-transition="${window}"
+                            data-scroll-target=".item-a6-p1"
+                            data-scroll-start="${#(this).offsetTop - #(this).offsetHeight}"
+                            data-scroll-end="${#(this).offsetTop + #(this).offsetHeight}">
+        <div class="wrapper app-icon">
+            <div class="inset">
+                <img class="no-touch item-a6-p1"   src="/img/a6-t-bg.png"   data-before="opacity:0.2; transform:translateY(30%);"
+                                                                            data-after="opacity:1.5; transform:translateY(-30%);">
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="inset flex-box flex-right">
+                <p class="flex-fill"></p>
+                <p class="flex-fill"></p>
+                <div class="flex-fill info-box">
+                    <p  class="t-white section-title item-a6-s1"
+                        data-scroll-transition="${window}"
+                        data-scroll-target=".item-a6-s1"
+                        data-scroll-start="${#(qs=#ts-a-a6).offsetTop - 100}"
+                        data-scroll-end="${#(qs=#ts-a-a6).offsetTop}"
+                        data-before="opacity:0;"
+                        data-after="opacity:1;">Scroll<br/>Transition</p>
+    
+                    <p  class="t-white mt24 item-a6-s2"
+                        data-scroll-transition="${window}"
+                        data-scroll-target=".item-a6-s2"
+                        data-scroll-start="${#(qs=#ts-a-a6).offsetTop + 50}"
+                        data-scroll-end="${#(qs=#ts-a-a6).offsetTop + 100}"
+                        data-before="opacity:0;"
+                        data-after="opacity:1;">세로 스크롤에 반응하는 애니메이션을 쉽게 만들 수 있도록 도와줍니다.</p>
+
+                    <div    class="t-white mt48 item-a6-s3 flex-box"
+                            data-scroll-transition="${window}"
+                            data-scroll-target=".item-a6-s3"
+                            data-scroll-start="${#(qs=#ts-a-a6).offsetTop + 150}"
+                            data-scroll-end="${#(qs=#ts-a-a6).offsetTop + 200}"
+                            data-before="opacity:0;"
+                            data-after="opacity:1;">
+                        <a class="main-section-button"    href="https://github.com/bbggkkk/scroll-transition"   target="_blank">
+                            <p class="icon-button-text">깃허브에서 보기</p>
+                            <p class="material-icons">launch</p>
+                        </a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="h50vh"></p>
+    </article>
+    
+    <article id="ts-a-a7"   class="article-top pt60 bg-black"
+                            data-scroll-transition="${window}"
+                            data-scroll-target=".item-a7-p1"
+                            data-scroll-start="${#(this).offsetTop - #(this).offsetHeight}"
+                            data-scroll-end="${#(this).offsetTop + #(this).offsetHeight}">
+        <div class="wrapper app-icon">
+            <div class="inset">
+                <img class="no-touch item-a7-p1"   src="/img/a7-t-bg.jpeg"   data-before="opacity:0.2; transform:translateY(30%);"
+                                                                            data-after="opacity:1.5; transform:translateY(-30%);">
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="inset flex-box flex-right">
+                <p class="flex-fill"></p>
+                <p class="flex-fill"></p>
+                <div class="flex-fill info-box">
+                    <p  class="t-white section-title item-a7-s1"
+                        data-scroll-transition="${window}"
+                        data-scroll-target=".item-a7-s1"
+                        data-scroll-start="${#(qs=#ts-a-a7).offsetTop - 100}"
+                        data-scroll-end="${#(qs=#ts-a-a7).offsetTop}"
+                        data-before="opacity:0;"
+                        data-after="opacity:1;">Other<br/>Works</p>
+    
+                    <p  class="t-white mt24 item-a7-s2"
+                        data-scroll-transition="${window}"
+                        data-scroll-target=".item-a7-s2"
+                        data-scroll-start="${#(qs=#ts-a-a7).offsetTop + 50}"
+                        data-scroll-end="${#(qs=#ts-a-a7).offsetTop + 100}"
+                        data-before="opacity:0;"
+                        data-after="opacity:1;">과거 작업물들입니다.</p>
+
+                    <div    class="t-white mt48 item-a7-s3 flex-box"
+                            data-scroll-transition="${window}"
+                            data-scroll-target=".item-a7-s3"
+                            data-scroll-start="${#(qs=#ts-a-a7).offsetTop + 150}"
+                            data-scroll-end="${#(qs=#ts-a-a7).offsetTop + 200}"
+                            data-before="opacity:0;"
+                            data-after="opacity:1;">
+                        <a class="main-section-button"    href="https://portfolio.431web.com"   target="_blank">
+                            <p class="icon-button-text">보러가기</p>
+                            <p class="material-icons">launch</p>
+                        </a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="h50vh"></p>
+    </article>
+    
+    <article id="ts-a-a8"   class="article-top">
+        <div class="wrapper h100vh">
+            <div class="inset flex-box flex-middle flex-center h100vh">
+                <p class="section-title">감사합니다.</p>
+            </div>
+        </div>
     </article>
 
     <script src="./js/scroll-transition.js"></script>

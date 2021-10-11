@@ -192,7 +192,7 @@ article picture img {
     position:sticky; top:calc(50% - 40vh + 60px);
 }
 .app-icon img {
-    width:50%; height:calc(40vh); object-fit:cover; border-radius:min(10vw,120px); min-width:240px;
+    max-width:50%; min-height:240px; object-fit:cover; border-radius:max(6vw,64px); min-width:240px;
 }
 
 .section-title {
@@ -202,6 +202,11 @@ article picture img {
     line-height:1.25;
 }
 
+.info-box-wrap {
+    position:absolute;
+    top:50%;
+    width:100%;
+}
 .info-box {
     border-radius:12px;
     padding:24px;

@@ -192,7 +192,7 @@ article picture img {
     position:sticky; top:calc(50% - 40vh + 60px);
 }
 .app-icon img {
-    width:50%; height:calc(40vh); object-fit:cover; border-radius:min(12vw,120px); min-width:240px;
+    width:50%; height:calc(40vh); object-fit:cover; border-radius:min(10vw,120px); min-width:240px;
 }
 
 .section-title {

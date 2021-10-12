@@ -1,12 +1,15 @@
-:animation {
-    --padding : calc(env(safe-area-inset-left) + 24px);
-}
-
 @keyframes profile {
     from {
-        transform:translate(calc(-50% + 50vw - 24px), calc(-50% + 30vh)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);
+        transform:translate(calc(-50% + min(50vw,540px) - 24px), calc(-50% + 25vh + 30px)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);
     }
     to {
-        transform:translate(calc(0% + 0vw - 0.0001px), calc(-50% + 0vh)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);
+        transform:translate(calc(0% + min(0vw,0px) - 0.0001px), calc(-50% + 0vh + 0px)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);
     }
+}
+
+@keyframes fade-out {
+    from { opacity:1;   transform:translateY(0px) rotate(0deg); }
+    50%  { transform:translateY(30px) rotate(-5deg);  }
+    75%  { opacity:0.3;  }
+    to   { opacity:0;   transform:translateY(-50px) rotate(5deg); }
 }

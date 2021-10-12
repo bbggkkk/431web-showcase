@@ -39,6 +39,7 @@
     <link href="./css/reset.css" rel="stylesheet"></head>
     <link href="./css/com.css" rel="stylesheet"></head>
     <link href="./css/style.css" rel="stylesheet"></head>
+    <link href="./css/animation.css" rel="stylesheet"></head>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155209386-2"></script>
@@ -53,16 +54,16 @@
 </head>
 <body>
     
-    <header data-scroll-transition="${window}"
-            data-scroll-target=".ts-h-a1"
-            data-scroll-start="0"
-            data-scroll-end="${#(qs=#ts-a-a1).offsetHeight}">
+    <header>
         <div class="wrapper">
             <div class="inset">
                 <div id="title-inset">
-                    <div id="title" class="title button no-button-style" onclick="window.scroll({top:0, behavior:'smooth'});">
-                        <div id="ts-h-a1" class="profile ts-h-a1"   data-before="transform:translate(calc(-50% + ${#(qs=#title-inset).offsetWidth/2}px), calc(-50% + ${#(qs=#ts-a-a1).offsetHeight/4}px)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);"
-                                                                    data-after="transform:translate(calc(0% + 0px), calc(-50% + 0px)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);">
+                    <div id="title" class="title button no-button-style">
+                        <div    id="ts-h-a1" class="profile ts-h-a1" onclick="window.scroll({top:0, behavior:'smooth'});"
+                                data-scroll-animation="profile"
+                                data-scroll-start="0"
+                                data-scroll-end="${#(qs=#ts-a-a2).offsetTop}">
+                                <!-- <img src="https://via.placeholder.com/300.png"> -->
                             <img class="no-touch" src="/img/profile.png">
                         </div>
                     </div>
@@ -82,13 +83,21 @@
             <div class="inset">
                 <h1  class="main-section-title flex-box flex-middle flex-center">
                     <div class="">
-                        <p>Seo Seon's</p>
-                        <p>Portfolio</p>
+                        <p  style="transform-origin:top left;"
+                            data-scroll-animation="fade-out"
+                            data-scroll-start="${#(this).offsetTop + 150}"
+                            data-scroll-end="${#(this).offsetTop + 350}">Seo Seon's</p>
+                        <p  style="transform-origin:top right;"
+                            data-scroll-animation="fade-out"
+                            data-scroll-start="${#(this).offsetTop + 250}"
+                            data-scroll-end="${#(this).offsetTop + 400}">Portfolio</p>
                     </div>
                 </h1>
             </div>
         </div>
-        <div class="wrapper mt24">
+        <div class="wrapper mt24"   data-scroll-animation="fade-out"
+                                    data-scroll-start="${#(this).offsetTop + 350}"
+                                    data-scroll-end="${#(this).offsetTop + 500}">
             <div class="inset flex-box flex-middle flex-center">
                 <button class="main-section-button" onclick="window.scroll({top:document.querySelector('#ts-a-a5').offsetTop - 60,behavior:'smooth'});;"   style="background:#ffc72c;">
                     <p class="icon-button-text">Works</p>
@@ -331,6 +340,10 @@
             </div>
         </div>
     </article>
+
+    <script src="./js/polyfill.js"></script>
+    <script src="./js/scroll-animation.js"></script>
+    <script src="./js/start.js"></script>
 
     <script src="./js/scroll-transition.js"></script>
     <script src="./js/main.js"></script>

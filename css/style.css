@@ -57,7 +57,7 @@ header .menu ul {
     color:rgb(var(--text));
 }
 .profile {
-    position:relative;
+    position:absolute;
     width:240px;
     overflow:hidden;
     border-radius:50%;

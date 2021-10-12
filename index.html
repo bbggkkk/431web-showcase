@@ -58,12 +58,12 @@
         <div class="wrapper">
             <div class="inset">
                 <div id="title-inset">
-                    <div id="title" class="title button no-button-style">
-                        <div    id="ts-h-a1" class="profile ts-h-a1" onclick="window.scroll({top:0, behavior:'smooth'});"
+                    <div id="title" class="title button no-button-style" style="perspective:700px;">
+                        <div    id="ts-h-a1" class="profile ts-h-a1 no-touch"
+                                onclick="window.scroll({top:0, behavior:'smooth'});"
                                 data-scroll-animation="profile"
                                 data-scroll-start="0"
                                 data-scroll-end="${#(qs=#ts-a-a2).offsetTop}">
-                                <!-- <img src="https://via.placeholder.com/300.png"> -->
                             <img class="no-touch" src="./img/profile.png">
                         </div>
                     </div>
@@ -78,7 +78,7 @@
         </div>
     </header>
 
-    <article id="ts-a-a1" class="article-top pb24 over-h">
+    <article id="ts-a-a1" class="article-top pb24 over-h" style="min-height:50vh;">
         <div class="wrapper pt60">
             <div class="inset">
                 <h1  class="main-section-title flex-box flex-middle flex-center">
@@ -95,9 +95,9 @@
                 </h1>
             </div>
         </div>
-        <div class="wrapper mt24"   data-scroll-animation="fade-out"
-                                    data-scroll-start="${#(this).offsetTop + 350}"
-                                    data-scroll-end="${#(this).offsetTop + 500}">
+        <div class="wrapper mt24 pb24"  data-scroll-animation="fade-out"
+                                        data-scroll-start="${#(this).offsetTop + 350}"
+                                        data-scroll-end="${#(this).offsetTop + 500}">
             <div class="inset flex-box flex-middle flex-center">
                 <button class="main-section-button" onclick="window.scroll({top:document.querySelector('#ts-a-a5').offsetTop - 60,behavior:'smooth'});;"   style="background:#ffc72c;">
                     <p class="icon-button-text">Works</p>
@@ -112,14 +112,11 @@
     </article>
 
     <article    id="ts-a-a2" class="article-top"
-                style="height:200vh;"
-                data-scroll-transition="${window}"
-                data-scroll-target=".item-s2"
-                data-scroll-start="${#(this).offsetTop + 100}"
-                data-scroll-end="${#(this).offsetTop + #(this).offsetHeight - #(de).offsetHeight - 100}">
-        <div    class="item-s2 img-bg over-h"     
-                data-before="clip-path:circle(0%);"
-                data-after="clip-path:circle(71%);">
+                style="height:200vh;">
+        <div    class="item-s2 img-bg over-h"
+                data-scroll-animation="round-clip"
+                data-scroll-start="0"
+                data-scroll-end="${#(qs=#ts-a-a2).offsetTop + #(qs=#ts-a-a2).offsetHeight - #(de).offsetHeight*1.25}">
             <picture class="no-touch">
                 <img srcset="./img/a2-t-bg@1.jpeg 480w,
                              ./img/a2-t-bg@2.jpeg 960w,
@@ -127,10 +124,11 @@
                              ./img/a2-t-bg.jpeg 4000w"
                      src="./img/a2-t-bg@2.jpeg">
             </picture>
-            <div class="warpper text-wrap">
-                <p id="item-s2-text"        class="item-s2 text"
-                                            data-before="transform:translate(-50%, -50%) scale(1);"
-                                            data-after="transform:translate(-50%, -50%) scale(0.1);">안녕하세요!</p>
+            <div    class="warpper text-wrap">
+                <p  class="text"
+                    data-scroll-animation="text-show"
+                    data-scroll-start="0"
+                    data-scroll-end="${#(qs=#ts-a-a2).offsetTop + #(qs=#ts-a-a2).offsetHeight - #(de).offsetHeight*1.25}">안녕하세요!</p>
             </div>
         </div>
     </article>
@@ -342,6 +340,7 @@
     </article>
 
     <script src="./js/polyfill.js"></script>
+    <script src="./js/bezier-easing.js"></script>
     <script src="./js/scroll-animation.js"></script>
     <script src="./js/start.js"></script>
 

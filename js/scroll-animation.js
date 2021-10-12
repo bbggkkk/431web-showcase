@@ -1,14 +1,14 @@
 (function(){
     class ScrollAnimation {
-        constructor(element, scrollTarget, animationName){
+        constructor(element, scrollTarget, animationName, ss, se, easing = [0,0,1,1]){
             this.element        = element;
             this.scrollTarget   = scrollTarget;
             this.animationName  = animationName;
 
-            this.dataScrollStart = this.element.getAttribute('data-scroll-start');
-            this.dataScrollEnd   = this.element.getAttribute('data-scroll-end');
-            this.element.removeAttribute('data-scroll-start');
-            this.element.removeAttribute('data-scroll-end');
+            this.ease           = bezier(easing[0],easing[1],easing[2],easing[3]);
+
+            this.dataScrollStart = ss;
+            this.dataScrollEnd   = se;
     
             this.body           = this.scrollTarget.constructor.name === 'Window' ? document.documentElement : this.scrollTarget
     
@@ -34,14 +34,13 @@
 
                     if(Y < this.scrollStart)    Y = this.scrollStart;
                     if(Y > this.scrollEnd)      Y = this.scrollEnd;
-                    Y = Y - this.scrollStart;
+                    Y = Math.floor(Y - this.scrollStart);
+                    
                     if(this.prevScroll === Y) {
                         this.element.style.willChange = 'auto';
                         this.scrolling = false;
                         return;
                     }
-
-                    // console.time('scroll');
 
                     if(this.element.style.willChange === 'auto'){
                         this.element.style.willChange = this.props.join(',');
@@ -77,9 +76,23 @@
             this.aniMapKeys   = Object.keys(this.animationMap);
             this.binMap       = this.createAnimationKeyframe(this.animationMap,this.scrollStart,this.scrollEnd);
             this.animation    = this.a_fillUndefined(this.binMap,this.element,this.animationMap,this.aniMapKeys);
+            // this.animation    = this.easing(this.animation,this.ease);
 
             this.scrolling = false;
             this.element.style.willChange = 'auto';
+        }
+
+        easing(ani, ease){
+            const lng = this.scrollEnd - this.scrollStart;
+            for(let i=0; i<lng; i++){
+                ani[i] = Object.keys(ani[i]).reduce((acc,item) => {
+                    acc[item] = ani[i][item].replace(/\-?\d{0,}\.?\d+/g,(match, idx) => {
+                        return match*ease(i)/i;
+                    });
+                    return acc;
+                },{});
+            }
+            return ani;
         }
 
         isEval(string){
@@ -122,6 +135,7 @@
             for(let i=0; i<=lng; i++){
                 if(numProps[i] !== undefined){
                     props[i] = numProps[i];
+                    // props[i] = numProps[i];
                 }else{
                     props[i] = keys.reduce((acc,item) => {
                         acc[item] = undefined;

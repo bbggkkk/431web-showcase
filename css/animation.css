@@ -1,9 +1,22 @@
 @keyframes profile {
     from {
-        transform:translate(calc(-50% + min(50vw,540px) - 24px), calc(-50% + 25vh + 30px)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);
+        transform:translate(calc(-50% + min(50vw,540px) - 24px), calc(-50% + 25vh + 30px)) scale(1);
+        box-shadow:0px 16px 32px 0px rgba(0,0,0,0.2);
+        -webkit-backdrop-filter:blur(10px);
+        backdrop-filter:blur(10px);
+        background:rgba(255,255,255,0.8);
+    }
+    90% {
+        -webkit-backdrop-filter:blur(0px);
+        backdrop-filter:blur(0px);
+        background:rgba(255,255,255,0.8);
     }
     to {
-        transform:translate(calc(0% + min(0vw,0px) - 0.0001px), calc(-50% + 0vh + 0px)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);
+        transform:translate(calc(0% + min(0vw,0px) - 0.0001px), calc(-50% + 0vh + 0px)) scale(0.15);
+        box-shadow:0px 0px 0px 0px rgba(0,0,0,0);
+        -webkit-backdrop-filter:blur(0px);
+        backdrop-filter:blur(0px);
+        background:rgba(255,255,255,0);
     }
 }
 
@@ -12,4 +25,15 @@
     50%  { transform:translateY(30px) rotate(-5deg);  }
     75%  { opacity:0.3;  }
     to   { opacity:0;   transform:translateY(-50px) rotate(5deg); }
+}
+
+
+@keyframes round-clip {
+    from { clip-path:circle(0%); }
+    to   { clip-path:circle(72%); }
+}
+
+@keyframes text-show {
+    from { transform:translate(-50%, -50%) scale(1); }
+    to   { transform:translate(-50%, -50%) scale(0.1); }
 }

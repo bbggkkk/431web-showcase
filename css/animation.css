@@ -7,6 +7,6 @@
         transform:translate(calc(-50% + 50vw - 24px), calc(-50% + 30vh)) scale(1); box-shadow:0 16px 32px rgba(0,0,0,0.1);
     }
     to {
-        transform:translate(calc(0% + 0vw - 0px), calc(-50% + 0vh)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);
+        transform:translate(calc(0% + 0vw - 0.0001px), calc(-50% + 0vh)) scale(0.15); box-shadow:0 16px 32px rgba(0,0,0,0);
     }
 }

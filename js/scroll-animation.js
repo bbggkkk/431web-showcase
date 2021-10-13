@@ -22,6 +22,18 @@
     
             this.scrollTarget.addEventListener('scroll', this.goToAndStop.bind(this), { passive:true });
             this.goToAndStop();
+
+
+            setTimeout(() => {
+                for(let i=0; i<this.scrollEnd; i++){
+                    if(this.animation[i] === undefined){
+                        setTimeout(() => {
+                            this.animation[i] = this.s_fillUndefined(this.animation[i], this.element, this.animationMap, this.aniMapKeys, i, this.props);
+                        },0);
+                    }
+                }
+            },0);
+
         }
         goToAndStop(keyframe){
             if(this.scrolling)  return;
@@ -52,6 +64,7 @@
                     // console.log(this.animation, Y, this.animation[0]);
                     if(this.animation[Y] === undefined){
                         this.animation[Y] = this.s_fillUndefined(this.animation[Y], this.element, this.animationMap, this.aniMapKeys, Y, this.props);
+                        console.log(Y)
                     }
                     if(this.animation[Y] !== undefined){
                         const keys = this.props;

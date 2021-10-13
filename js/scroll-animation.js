@@ -25,7 +25,7 @@
 
 
             setTimeout(() => {
-                for(let i=0; i<this.scrollEnd; i++){
+                for(let i=0; i<=this.scrollEnd; i++){
                     if(this.animation[i] === undefined){
                         setTimeout(() => {
                             this.animation[i] = this.s_fillUndefined(this.animation[i], this.element, this.animationMap, this.aniMapKeys, i, this.props);
@@ -64,7 +64,6 @@
                     // console.log(this.animation, Y, this.animation[0]);
                     if(this.animation[Y] === undefined){
                         this.animation[Y] = this.s_fillUndefined(this.animation[Y], this.element, this.animationMap, this.aniMapKeys, Y, this.props);
-                        console.log(Y)
                     }
                     if(this.animation[Y] !== undefined){
                         const keys = this.props;
@@ -85,8 +84,8 @@
         }
         init(){
             this.prevScroll   = undefined;
-            this.scrollStart  = this.dataScrollStart !== null ? +this.isEval(this.dataScrollStart) : this.body.offsetTop;
-            this.scrollEnd    = this.dataScrollEnd !== null ? +this.isEval(this.dataScrollEnd) : this.body.offsetTop + this.body.scrollHeight - this.body.offsetHeight;
+            this.scrollStart  = this.dataScrollStart !== null ? Math.round(+this.isEval(this.dataScrollStart)) : Math.round(this.body.offsetTop);
+            this.scrollEnd    = this.dataScrollEnd !== null ? Math.round(+this.isEval(this.dataScrollEnd)) : Math.round(this.body.offsetTop + this.body.scrollHeight - this.body.offsetHeight);
             this.scrollDiff   = this.scrollEnd - this.scrollStart;
     
     

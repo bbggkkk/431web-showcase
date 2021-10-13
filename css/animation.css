@@ -34,7 +34,6 @@
 }
 
 @keyframes text-show {
-    from { transform:translate(-50%, -100%) scale(1); }
-    50%  { transform:translate(-50%, -50%) scale(0.45); }
+    from { transform:translate(-50%, -50%) scale(1); }
     to   { transform:translate(-50%, -50%) scale(0.1); }
 }

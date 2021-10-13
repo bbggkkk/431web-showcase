@@ -34,6 +34,8 @@
 }
 
 @keyframes text-show {
-    from { transform:translate(-50%, -50%) scale(1); }
-    to   { transform:translate(-50%, -50%) scale(0.1); }
+    from { transform:translate(-50%, calc(-50% - 0vh))  rotate(0deg) scale(1); }
+    80%  { transform:translate(-50%, calc(-50% - 0vh))  rotate(0deg) scale(0.1); }
+    90%  { transform:translate(-50%, calc(-50% - 25vh))  rotate(10deg) scale(0.1); }
+    to   { transform:translate(-50%, calc(-50% - 50vh)) rotate(-10deg) scale(0.1); }
 }

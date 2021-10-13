@@ -113,22 +113,24 @@
 
     <article    id="ts-a-a2" class="article-top"
                 style="height:200vh;">
-        <div    class="item-s2 img-bg over-h"
-                data-scroll-animation="round-clip"
-                data-scroll-start="${#(qs=#ts-a-a2).offsetTop}"
-                data-scroll-end="${#(qs=#ts-a-a2).offsetTop + #(qs=#ts-a-a2).offsetHeight - #(de).offsetHeight*1.25}">
-            <picture class="no-touch">
-                <img srcset="./img/a2-t-bg@1.jpeg 480w,
-                             ./img/a2-t-bg@2.jpeg 960w,
-                             ./img/a2-t-bg@3.jpeg 1440w,
-                             ./img/a2-t-bg.jpeg 4000w"
-                     src="./img/a2-t-bg@2.jpeg">
-            </picture>
-            <div    class="warpper text-wrap">
-                <p  class="text"
-                    data-scroll-animation="text-show"
+        <div    class="item-s2 img-bg over-h">
+            <div    class="mask-wrap"
+                    data-scroll-animation="round-clip"
                     data-scroll-start="${#(qs=#ts-a-a2).offsetTop}"
-                    data-scroll-end="${#(qs=#ts-a-a2).offsetTop + #(qs=#ts-a-a2).offsetHeight - #(de).offsetHeight*1.25}">안녕하세요!</p>
+                    data-scroll-end="${#(qs=#ts-a-a2).offsetTop + #(qs=#ts-a-a2).offsetHeight - #(de).offsetHeight*1.25}">
+                    <picture class="no-touch">
+                        <img srcset="./img/a2-t-bg@1.jpeg 480w,
+                                     ./img/a2-t-bg@2.jpeg 960w,
+                                     ./img/a2-t-bg@3.jpeg 1440w,
+                                     ./img/a2-t-bg.jpeg 4000w"
+                             src="./img/a2-t-bg@2.jpeg">
+                    </picture>
+                    <div    class="warpper text-wrap">
+                        <p  class="text"
+                            data-scroll-animation="text-show"
+                            data-scroll-start="0"
+                            data-scroll-end="${#(qs=#ts-a-a2).offsetTop + #(qs=#ts-a-a2).offsetHeight - #(de).offsetHeight*0.8}">안녕하세요!</p>
+                    </div>
             </div>
         </div>
     </article>

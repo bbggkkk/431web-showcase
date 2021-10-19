@@ -23,41 +23,6 @@ body {
     padding-right:calc(env(safe-area-inset-right) + 24px);
 }
 
-.window {
-    width:100%;
-    height:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    background:rgb(255,255,255);
-    z-index:9999;
-}
-.window header {
-    box-shadow:0 1px 0 rgba(0,0,0,0.1);
-}
-.window header .inset {
-    position:relative;
-}
-.window header .title {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-.window header .fn {
-    position:absolute;
-    width:60px;
-    height:60px;
-    top:0;
-}
-.window header .fn-left {
-    left:0;
-    background:red;
-}
-.window header .fn-right {
-    right:0;
-    background:red;
-}
-
 header {
     z-index:9;
     position:fixed;

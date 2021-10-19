@@ -8,5 +8,4 @@
             element[i].removeAttribute('data-scroll-end');
         },0);
     }
-    // [...bodys].forEach(item => { item.ScrollAnimation = new ScrollAnimation(item, window, item.getAttribute('data-scroll-animation')); } );
 })();

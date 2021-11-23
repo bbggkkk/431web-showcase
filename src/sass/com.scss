@@ -1,73 +1,14 @@
-.mt12 {
-    margin-top:12px !important;
-}
-.mt24 {
-    margin-top:24px !important;
-}
-.mt48 {
-    margin-top:48px !important;
-}
-.mt50vh {
-    margin-top:50vh !important;
+body {
+    font-family:"Noto Sans KR", sans-serif;
 }
 
-
-.pt60 {
-    padding-top:60px;
-}
-.pt440 {
-    padding-top:440px;
-}
-.pt540 {
-    padding-top:540px;
-}
-
-.pb24 {
-    padding-bottom:24px;
-}
-
-.w240 {
-    width:240px;
-}
-
-.h120 {
-    height:120px;
-}
-.h160 {
-    height:160px;
-}
-.h240 {
-    height:240px;
-}
-.h300 {
-    height:300px;
-}
-.h360 {
-    height:360px;
-}
-.h480 {
-    height:480px;
-}
-.h540 {
-    height:540px;
-}
-.h640 {
-    height:640px;
-}
-.h50p {
-    height:50%;
-}
-.h66p {
-    height:66%;
-}
-.h100p {
-    height:100%;
-}
-.h50vh {
-    height:50vh;
-}
-.h100vh {
-    height:100vh;
+:root {
+    --background:255,255,255;
+    --white:255,255,255;
+    --black:0,0,0;
+    --paper:242,242,242;
+    --dark:24,24,24;
+    --text:#1a1a1a;
 }
 
 .flex-box {

@@ -1,15 +1,4 @@
-body {
-    font-family:"Noto Sans KR", sans-serif;
-}
 
-:root {
-    --background:255,255,255;
-    --white:255,255,255;
-    --black:0,0,0;
-    --paper:242,242,242;
-    --dark:24,24,24;
-    --text:#1a1a1a;
-}
 .dark :root {
     --paper:24,24,24;
 }

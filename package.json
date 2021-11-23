@@ -1,0 +1,33 @@
+{
+  "name": "431web-showcase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "webpack",
+    "build": "webpack --config webpack.build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbggkkk/431web-showcase.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbggkkk/431web-showcase/issues"
+  },
+  "homepage": "https://github.com/bbggkkk/431web-showcase#readme",
+  "dependencies": {
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1",
+    "worker-loader": "^3.0.8"
+  },
+  "devDependencies": {
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.5",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0"
+  }
+}

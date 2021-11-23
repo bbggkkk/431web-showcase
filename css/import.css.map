@@ -1,0 +1,1 @@
+{"version":3,"file":"import.css","mappings":";;;AAAA;EACI;AACJ,C","sources":["webpack://431web-showcase/./src/sass/import.scss"],"sourcesContent":[".test {\n    width:200px;\n}"],"names":[],"sourceRoot":""}

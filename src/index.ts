@@ -1,49 +1,15 @@
-import { createKeyframes } from "./createKeyframes";
+import { createKeyframes, gotoAndStop } from "./createKeyframes";
+import { createGesture } from "./elementGesture";
 import { getCSSAttribute } from "./inlineAnimationParser";
 
-import { play, gotoAndStop } from "./createKeyframes";
-import { ScrollAnimation, ScrollAnimationItem } from "./scrollAnimation";
+const box = document.querySelector('#box') as HTMLElement;
+// const [updator, getKeyframe] = createKeyframes(getCSSAttribute(box),100);
+// let   animation = updator();
 
-// const animation = {
-//     '0' : {
-//         transform:'translate(0px, 0px)',
-//         opacity:0.5,
-//         background:'blue'
-//     },
-//     '50'  : {
-//         transform:() => `translate(0px, ${document.documentElement.offsetHeight-300}px)`,
-//         background:'red'
-//     },
-//     '100' : {
-//         transform:'translate(0px, 0px)',
-//         opacity:1,
-//         background:'#1a1a1a'
-//     }
-// }
-// const op = {
-//     fnKeys : {
-//         '50' : [ 'transform' ]
-//     }
-//     ,colorKeys : {
-//         '0'   : [ 'background' ],
-//         '50'  : [ 'background' ],
-//         '100' : [ 'background' ]
-//     }
-// };
-
-
-// declare global {
-//     interface Window {
-//         ScrollAnimation : Function;
-//     }
-// }
-
-// if(!(typeof exports === 'object' && typeof module !== 'undefined')){
-//     window.ScrollAnimation = ScrollAnimation;
-// }
-// console.log(new ScrollAnimation(window, '.target'));
-
-
-const box = document.querySelector('#box');
-
-console.log(box);
+const [on, off] = createGesture(box, {
+    dragStart : async (r:any, e:TouchEvent|MouseEvent) => {
+        const [x, y] = r.position;
+        gotoAndStop(box, [{transform:`translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`}], 0);
+    },
+});
+on();

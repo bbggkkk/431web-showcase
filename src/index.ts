@@ -2,40 +2,58 @@ import { createKeyframes, gotoAndStop } from "./createKeyframes";
 import { createGesture } from "./elementGesture";
 import { getCSSAttribute } from "./inlineAnimationParser";
 
-const box = document.querySelectorAll('.box') as NodeList;
-const [updator, getKeyframe] = createKeyframes({
-    '0' : {
-        backgroundColor:'#1167bd'
-    },
-    '100' : {
-        backgroundColor:'#ffc72c'
-    }
-},() => Math.round(Math.sqrt(Math.pow(document.documentElement.offsetHeight/2,2) + Math.pow(document.documentElement.offsetWidth/2,2)))-200 );
-// let   animation = updator();
-const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) {
-    // console.log(r.type, this)
-    // console.log(origin);
-    let [originX, originY] = origin === undefined ? [0, 0] : origin;
-    let animation = origin === undefined ? await updator() : origin[2];
-
-    const [x, y]   = r.move;
-    const [ex, ey] = r.position;
-    [originX, originY] = [originX+x, originY+y];
-    [...document.querySelectorAll('div')].forEach(item => item.style.zIndex = '0');
-    this.style.zIndex = '1';
-    gotoAndStop(this, [{transform:`translate(calc(${originX}px), calc(${originY}px))`}], 0);
-
-    const ani = animation[Math.round(Math.sqrt(Math.pow(originX/2,2) + Math.pow(originY/2,2)))];
-    ani && gotoAndStop(this, [ani], 0);
-    // console.log(origin, [originX, originY, animation]);
-    return [originX, originY, animation];
+interface animationValue {
+    [index:string] : number|string|Function
 }
 
-box.forEach(item => {
-    const [on, off] = createGesture(item as HTMLElement, {
-        dragStart   : dragFunction,
-        drag        : dragFunction,
-        dragEnd     : dragFunction,
+
+const box = document.querySelectorAll('.box') as NodeList;
+
+
+const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) {
+    let [originX, originY] = origin === undefined ? [0, 0] : origin;
+    
+    const [x, y]   = r.move;
+    [originX, originY] = [originX+x, originY+y];
+    box.forEach(item => (item as HTMLElement).style.zIndex = '0');
+    this.style.zIndex = '1';
+    gotoAndStop(this, [{transform:`translate(0, calc(${originY}px))`}], 0);
+    // gotoAndStop(this, [{transform:`translate(calc(${originX}px), calc(${originY}px))`}], 0);
+
+    return [originX, originY];
+}
+
+box.forEach(async $item => {
+    const eleList = Array.from(($item as HTMLElement).querySelectorAll(':scope [data-animation-0]'));
+    eleList.push($item as HTMLElement);
+    const aniList = eleList.map((item:HTMLElement) => {
+        const tmp = createKeyframes(getCSSAttribute(item as HTMLElement), () => Math.round(document.documentElement.offsetHeight));
+        gotoAndStop(item as HTMLElement, [tmp[1](0)], 0);
+        return tmp;
+    });
+    let anis = [];
+    aniList.forEach(async item => anis.push(await item[0]()) );
+    console.log(anis);
+
+    const [on, off] = createGesture($item as HTMLElement, {
+        dragStart   : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
+            anis.forEach((item, idx:number) => {
+                let [originX, originY] = origin === undefined ? [0, 0] : origin;
+                const [x, y]   = r.move;
+                [originX, originY] = [originX+x, originY+y];
+                console.log(item[Math.round(originY)]);
+                gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.round(originY));
+            });
+            return dragFunction.call(this, r, e, origin);
+        },
+        drag        : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
+            
+            return dragFunction.call(this, r, e, origin);
+        },
+        dragEnd     : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
+            
+            return dragFunction.call(this, r, e, origin);
+        },
     });
     on();
 })

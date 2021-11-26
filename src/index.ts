@@ -2,8 +2,7 @@ import { createKeyframes, gotoAndStop } from "./createKeyframes";
 import { createGesture } from "./elementGesture";
 import { getCSSAttribute } from "./inlineAnimationParser";
 
-const box = document.querySelector('#box') as HTMLElement;
-const box2 = document.querySelector('#box2') as HTMLElement;
+const box = document.querySelectorAll('.box') as NodeList;
 const [updator, getKeyframe] = createKeyframes({
     '0' : {
         backgroundColor:'#1167bd'
@@ -32,15 +31,11 @@ const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) 
     return [originX, originY, animation];
 }
 
-const [on, off] = createGesture(box, {
-    dragStart   : dragFunction,
-    drag        : dragFunction,
-    dragEnd     : dragFunction,
-});
-const [on2, off2] = createGesture(box2, {
-    dragStart   : dragFunction,
-    drag        : dragFunction,
-    dragEnd     : dragFunction,
-});
-on();
-on2();
+box.forEach(item => {
+    const [on, off] = createGesture(item as HTMLElement, {
+        dragStart   : dragFunction,
+        drag        : dragFunction,
+        dragEnd     : dragFunction,
+    });
+    on();
+})

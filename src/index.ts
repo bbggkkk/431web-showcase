@@ -41,7 +41,7 @@ box.forEach(async $item => {
                 let [originX, originY] = origin === undefined ? [0, 0] : origin;
                 const [x, y]   = r.move;
                 [originX, originY] = [originX+x, originY+y];
-                if(Math.abs(Math.round(originY)) >= item.length) return;
+                if(Math.abs(Math.round(originY)) >= item.length || Math.round(originY) > 0) return;
                 // console.log(Math.round(originY),item[Math.round(originY)]);
                 gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
             });
@@ -52,7 +52,7 @@ box.forEach(async $item => {
                 let [originX, originY] = origin === undefined ? [0, 0] : origin;
                 const [x, y]   = r.move;
                 [originX, originY] = [originX+x, originY+y];
-                if(Math.abs(Math.round(originY)) >= item.length) return;
+                if(Math.abs(Math.round(originY)) >= item.length || Math.round(originY) > 0) return;
                 // console.log(Math.round(originY),item[Math.round(originY)]);
                 gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
             });

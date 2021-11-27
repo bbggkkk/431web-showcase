@@ -69,7 +69,7 @@ export const $createTouchEndFunction = (element:HTMLElement, touchEventInfoFunct
     //touchend시 실행할 함수
     const rtFunction = (e:TouchEvent) => {
         e.preventDefault();
-        document.removeEventListener('touchend', dragFunction[0] as EventListenerOrEventListenerObject);
+        document.removeEventListener('touchmove', dragFunction[0] as EventListenerOrEventListenerObject);
         document.removeEventListener('touchend', rtFunction as EventListenerOrEventListenerObject);
         requestAnimationFrame(async () => {
             const [info, bf] = touchEventInfoFunction ? touchEventInfoFunction(e) : '';
@@ -82,7 +82,7 @@ export const $createTouchEndFunction = (element:HTMLElement, touchEventInfoFunct
 export const $createMouseUpFunction = (element:HTMLElement, touchEventInfoFunction:Function, sendDataFunction:Array<Function>, dragFunction:Array<Function>, callback?:Function) => {
     //mouseup 실행할 함수
     const rtFunction = (e:MouseEvent) => {
-        document.removeEventListener('mouseup', dragFunction[1] as EventListenerOrEventListenerObject);
+        document.removeEventListener('mousemove', dragFunction[1] as EventListenerOrEventListenerObject);
         document.removeEventListener('mouseup', rtFunction as EventListenerOrEventListenerObject);
         requestAnimationFrame(async () => {
             const [info, bf] = touchEventInfoFunction ? touchEventInfoFunction(e) : '';

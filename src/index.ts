@@ -7,7 +7,7 @@ interface animationValue {
 }
 
 
-const box = document.querySelectorAll('.box') as NodeList;
+const box = document.querySelectorAll('.card-dragbar') as NodeList;
 
 
 const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) {
@@ -15,8 +15,6 @@ const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) 
     
     const [x, y]   = r.move;
     [originX, originY] = [originX+x, originY+y];
-    box.forEach(item => (item as HTMLElement).style.zIndex = '0');
-    this.style.zIndex = '1';
     gotoAndStop(this, [{transform:`translate(0, calc(${originY}px))`}], 0);
     // gotoAndStop(this, [{transform:`translate(calc(${originX}px), calc(${originY}px))`}], 0);
 
@@ -24,7 +22,7 @@ const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) 
 }
 
 box.forEach(async $item => {
-    const eleList = Array.from(($item as HTMLElement).querySelectorAll(':scope [data-animation-0]'));
+    const eleList = Array.from(($item as HTMLElement).closest('.plate').querySelectorAll(':scope [data-animation-0]'));
     eleList.push($item as HTMLElement);
     const aniList = eleList.map((item:HTMLElement) => {
         const tmp = createKeyframes(getCSSAttribute(item as HTMLElement), () => Math.round(document.documentElement.offsetHeight/1.25));
@@ -41,7 +39,7 @@ box.forEach(async $item => {
 
     const [on, off] = createGesture($item as HTMLElement, {
         dragStart   : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
-            this.classList.remove('transition');
+            this.closest('.box').classList.remove('transition');
             anis.forEach((item, idx:number) => {
                 eleList[idx].classList.remove('transition');
                 let [originX, originY] = origin === undefined ? [0, 0] : origin;
@@ -55,7 +53,7 @@ box.forEach(async $item => {
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
                 }
             });
-            return dragFunction.call(this, r, e, origin);
+            return dragFunction.call(this.closest('.box'), r, e, origin);
         },
         drag        : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
 
@@ -72,7 +70,7 @@ box.forEach(async $item => {
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
                 }
             });
-            return dragFunction.call(this, r, e, origin);
+            return dragFunction.call(this.closest('.box'), r, e, origin);
         },
         dragEnd     : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
             // console.log(r.direction);
@@ -80,11 +78,11 @@ box.forEach(async $item => {
 
             off();
 
-            this.classList.add('transition');
+            this.closest('.box').classList.add('transition');
             if(dir < 0) {
-                gotoAndStop(this, [{transform:`translate(0, calc(-100% + 80px) )`}], 0);
+                gotoAndStop(this.closest('.box'), [{transform:`translate(0, calc(-100% + 96px) )`}], 0);
             }else{
-                gotoAndStop(this, [{transform:`translate(0, 0)`}], 0);
+                gotoAndStop(this.closest('.box'), [{transform:`translate(0, 0)`}], 0);
             }
             
             anis.forEach((item, idx:number) => {
@@ -96,7 +94,7 @@ box.forEach(async $item => {
                 }
             });
             setTimeout(on, 400);
-            return dir < 0 ? [0, -document.documentElement.offsetHeight + 80] : [0, 0];
+            return dir < 0 ? [0, -document.documentElement.offsetHeight + 96] : [0, 0];
         },
     });
     on();

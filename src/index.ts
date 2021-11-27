@@ -79,10 +79,11 @@ box.forEach(async $item => {
             off();
 
             this.closest('.box').classList.add('transition');
+            gotoAndStop(this.closest('.box'), [{transform:''}], 0);
             if(dir < 0) {
-                gotoAndStop(this.closest('.box'), [{transform:`translate(0, calc(-100% + 96px) )`}], 0);
+                this.closest('.box').classList.add('open');
             }else{
-                gotoAndStop(this.closest('.box'), [{transform:`translate(0, 0)`}], 0);
+                this.closest('.box').classList.remove('open');
             }
             
             anis.forEach((item, idx:number) => {

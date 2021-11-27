@@ -33,21 +33,29 @@ box.forEach(async $item => {
     });
     let anis = [];
     aniList.forEach(async item => anis.push(await item[0]()) );
-    console.log(anis);
 
     const [on, off] = createGesture($item as HTMLElement, {
         dragStart   : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
+            // console.log(anis);
             anis.forEach((item, idx:number) => {
                 let [originX, originY] = origin === undefined ? [0, 0] : origin;
                 const [x, y]   = r.move;
                 [originX, originY] = [originX+x, originY+y];
-                console.log(item[Math.round(originY)]);
-                gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.round(originY));
+                if(Math.abs(Math.round(originY)) >= item.length) return;
+                // console.log(Math.round(originY),item[Math.round(originY)]);
+                gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
             });
             return dragFunction.call(this, r, e, origin);
         },
         drag        : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
-            
+            anis.forEach((item, idx:number) => {
+                let [originX, originY] = origin === undefined ? [0, 0] : origin;
+                const [x, y]   = r.move;
+                [originX, originY] = [originX+x, originY+y];
+                if(Math.abs(Math.round(originY)) >= item.length) return;
+                // console.log(Math.round(originY),item[Math.round(originY)]);
+                gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
+            });
             return dragFunction.call(this, r, e, origin);
         },
         dragEnd     : function(r:any, e:TouchEvent|MouseEvent, origin:any) {

@@ -177,8 +177,10 @@ export const createEventInfoFunction = (event?:any, prevData?:touchEventData) =>
             position    : [$clientX, $clientY],
             prePosition : [!isStart ? prevData!.position[0] : $clientX,
                            !isStart ? prevData!.position[1] : $clientY],
-            direction   : [prevData !== undefined ? $moveX>0?1:$moveX<0?-1:0  : 0,
-                           prevData !== undefined ? $moveY>0?1:$moveY<0?-1:0  : 0],
+            direction   : type !== 'dragEnd' ?
+                           [prevData !== undefined ? $moveX>0?1:$moveX<0?-1:0  : 0,
+                            prevData !== undefined ? $moveY>0?1:$moveY<0?-1:0  : 0] :
+                           [prevData.direction[0], prevData.direction[1]],
             distance    : [$distance1, $distance2, $distance1],
             distanceAll : prevData !== undefined ? isStart ? 0 : prevData.distanceAll += $move3 : 0,
             type        : type,
@@ -188,6 +190,7 @@ export const createEventInfoFunction = (event?:any, prevData?:touchEventData) =>
                           false : prevData!.isClicked
         }
         prevData = JSON.parse(JSON.stringify(thisData));
+
 
         return [thisData, before];
     }

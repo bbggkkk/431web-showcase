@@ -22,10 +22,10 @@ const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) 
 }
 
 box.forEach(async $item => {
-    const eleList = Array.from(($item as HTMLElement).closest('.plate').querySelectorAll(':scope [data-animation-0]'));
+    const eleList = Array.from(($item as HTMLElement).closest('.plate').querySelectorAll(':scope .plate-animation'));
     eleList.push($item as HTMLElement);
     const aniList = eleList.map((item:HTMLElement) => {
-        const tmp = createKeyframes(getCSSAttribute(item as HTMLElement), () => Math.round(document.documentElement.offsetHeight/1.25));
+        const tmp = createKeyframes(getCSSAttribute(item as HTMLElement), () => Math.round(document.documentElement.offsetHeight - 96));
         gotoAndStop(item as HTMLElement, [tmp[1](0)], 0);
         return tmp;
     });
@@ -47,7 +47,7 @@ box.forEach(async $item => {
                 [originX, originY] = [originX+x, originY+y];
                 if(Math.round(originY) > 0){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, 0);
-                }else if(Math.abs(Math.round(originY)) > item.length){
+                }else if(Math.abs(Math.round(originY)) >= item.length){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, item.length - 1);
                 }else{
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
@@ -64,7 +64,7 @@ box.forEach(async $item => {
                 [originX, originY] = [originX+x, originY+y];
                 if(Math.round(originY) > 0){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, 0);
-                }else if(Math.abs(Math.round(originY)) > item.length){
+                }else if(Math.abs(Math.round(originY)) >= item.length){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, item.length - 1);
                 }else{
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));

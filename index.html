@@ -132,6 +132,15 @@
         .transition {
             transition:all 0.4s;
         }
+        .row {
+            padding:0 24px;
+            margin-bottom:12px;
+        }
+        .title {
+            font-size:1.5em;
+            font-weight:bold;
+            margin-bottom:12px;
+        }
     </style>
 
 </head>
@@ -143,8 +152,8 @@
                                 data-animation-100="background:green;"></div> -->
 
     <div class="plate">
-        <div class="box plate-box"  data-animation-0="width:<$return `calc(100% - 24px - ${window.innerWidth > 480 ? window.innerWidth - 480 : 0}px)`;$>; border-width:1px;"
-                                    data-animation-100="width:calc(100% - 0px - 0px); border-width:0px;">
+        <div class="box plate-box"  data-animation-0="width:<$return `calc(100% - 24px - ${window.innerWidth > 480 ? window.innerWidth - 480 : 0}px)`;$>; border-width:1px; box-shadow:0 8px 16px rgba(0,0,0,0.2);"
+                                    data-animation-100="width:calc(100% - 0px - 0px); border-width:0px; box-shadow:0 0px 64px rgba(0,0,0,0.1);">
             <div class="card-dragbar">
                 <div></div>
             </div>
@@ -152,13 +161,16 @@
                 <div class="card-title-box">
                     <div class="card-title flex-fill flex-box flex-between flex-middle">
                         <!-- <p class="title-left">홈</p> -->
-                        <p class="title-text">Contact</p>
+                        <p class="title-text plate-animation"   data-animation-0="opacity:1;"
+                                                                data-animation-100="opacity:0;">Works</p>
                         <!-- <p class="title-right">메뉴2</p> -->
                     </div>
                 </div>
-                <div class="card-content-box">
-                    <div style="height:200vh; background:blue;">
-                        <div style="height:50%; background:green;"></div>
+                <div class="card-content-box plate-animation"   data-animation-0="opacity:0;"
+                                                                data-animation-100="opacity:1;">
+                    <div class="row">
+                        <p class="title">안녕하세요</p>
+                        <p>서성일입니다.</p>
                     </div>
                 </div>
             </div>

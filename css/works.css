@@ -283,7 +283,7 @@ body {
   margin-bottom: 0;
 }
 
-.card-content-box > div:nth-of-type(1) {
+.card-content-box > div:nth-child(1) {
   padding: 0 24px;
 }
 

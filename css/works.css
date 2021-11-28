@@ -11,6 +11,7 @@ body, html {
   width: 100%;
   height: 100%;
   color: var(--text);
+  overflow: hidden;
 }
 
 img {
@@ -36,6 +37,10 @@ body {
 }
 
 :root {
+  --sat: env(safe-area-inset-top);
+  --sar: env(safe-area-inset-right);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
   --background:255,255,255;
   --white:255,255,255;
   --black:0,0,0;
@@ -162,7 +167,6 @@ body {
 .main-header .main-header-box .profile {
   width: 72px;
   height: 24px;
-  display: flex;
 }
 
 .plate {
@@ -183,14 +187,14 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 32px 32px 0 0;
   box-sizing: border-box;
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, calc(0px - env(safe-area-inset-bottom)), 0);
   border: 1px solid rgba(128, 128, 128, 0.5);
   position: relative;
   overflow: hidden;
 }
 
 .plate-box.open {
-  transform: translate3d(0, calc(-50% + 80px), 0);
+  transform: translate3d(0, max(-50% + 128px, -840px), 0);
 }
 
 .plate-box-wrap {
@@ -198,7 +202,7 @@ body {
   flex-direction: column;
   height: 50%;
   position: relative;
-  z-index: 0;
+  z-index: 1;
 }
 
 .card-dragbar {
@@ -219,6 +223,7 @@ body {
   height: 100%;
   background: rgba(var(--black), 0.2);
   border-radius: 9.375%/100%;
+  transform: translate3d(0, 0, 0);
 }
 
 .card-title-box {
@@ -227,6 +232,7 @@ body {
   height: 64px;
   position: relative;
   z-index: 9;
+  transform: translate3d(0, 0, 0);
 }
 
 .card-title {
@@ -248,8 +254,8 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 0;
-  padding-top: 64px;
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .transition {
@@ -269,6 +275,14 @@ body {
   height: 48px;
 }
 
+.plate .row p {
+  margin-bottom: 12px;
+}
+
+.plate .row p:last-of-type {
+  margin-bottom: 0;
+}
+
 .card-content-box > div:nth-of-type(1) {
   padding: 0 24px;
 }
@@ -285,23 +299,22 @@ body {
   font-size: 1.5em;
   font-weight: bold;
   position: sticky;
-  top: -64px;
+  top: 0px;
   background: rgba(var(--white), 0.75);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   height: 64px;
-  transform: translateX(-24px);
+  transform: translate3d(-24px, 0, 0);
   width: calc(100% + 48px);
   padding: 0 24px;
   z-index: 9;
   margin-bottom: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .title > .scroll-animation {
   transform-origin: left;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .num-p {
@@ -357,7 +370,7 @@ body {
 }
 
 .in-document-link > .material-icons {
-  margin-left: 4px;
+  margin-left: 2px;
   font-size: 100%;
   transform: translateY(1px);
 }

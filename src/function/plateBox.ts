@@ -2,11 +2,13 @@ import { createKeyframes, gotoAndStop } from "@src/createKeyframes";
 import { createGesture } from "@src/elementGesture";
 import { getCSSAttribute } from "@src/inlineAnimationParser";
 
+const sb  = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"));
+console.log(sb);
 const box = document.querySelectorAll('.card-dragbar') as NodeList;
 
 
 const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) {
-    let [originX, originY] = (origin === undefined) ? [0, 0] : origin;
+    let [originX, originY] = (origin === undefined) ? [0, -sb] : origin;
     
     const [x, y]   = r.move;
     [originX, originY] = [originX+x, originY+y];
@@ -39,30 +41,30 @@ box.forEach(async $item => {
             this.closest('.box').classList.remove('transition');
             anis.forEach((item, idx:number) => {
                 eleList[idx].classList.remove('transition');
-                let [originX, originY] = origin === undefined ? [0, 0] : origin;
+                let [originX, originY] = origin === undefined ? [0, -sb] : origin;
                 const [x, y]   = r.move;
                 [originX, originY] = [originX+x, originY+y];
-                if(Math.round(originY) > 0){
+                if(Math.round(originY-sb) > 0){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, 0);
-                }else if(Math.abs(Math.round(originY)) >= item.length){
+                }else if(Math.abs(Math.round(originY-sb)) >= item.length){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, item.length - 1);
                 }else{
-                    gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
+                    gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY-sb)));
                 }
             });
             return dragFunction.call(this.closest('.box'), r, e, origin);
         },
         drag        : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
             anis.forEach((item, idx:number) => {
-                let [originX, originY] = origin === undefined ? [0, 0] : origin;
+                let [originX, originY] = origin === undefined ? [0, sb] : origin;
                 const [x, y]   = r.move;
                 [originX, originY] = [originX+x, originY+y];
-                if(Math.round(originY) > 0){
+                if(Math.round(originY-sb) > 0){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, 0);
-                }else if(Math.abs(Math.round(originY)) >= item.length){
+                }else if(Math.abs(Math.round(originY-sb)) >= item.length){
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, item.length - 1);
                 }else{
-                    gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY)));
+                    gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY-sb)));
                 }
             });
             return dragFunction.call(this.closest('.box'), r, e, origin);
@@ -87,7 +89,7 @@ box.forEach(async $item => {
                 }
             });
             setTimeout(on, 500);
-            return dir < 0 ? [0, -document.documentElement.offsetHeight + 80] : [0, 0];
+            return dir < 0 ? [0, Math.max(-document.documentElement.offsetHeight + 128, -840)] : [0, -sb];
         },
     });
     on();

@@ -68,6 +68,7 @@ export class ScrollAnimationItem {
     scrollStart : number|Function;
     scrollEnd   : number|Function;
     length      : Function;
+    prevScroll  : number;
 
     timer       : any;
     constructor(element:HTMLElement){
@@ -103,6 +104,7 @@ export class ScrollAnimationItem {
     }
 
     async setAnimationFrame(frame:number){
+        this.prevScroll = frame;
         if(this.animation !== undefined) {
             gotoAndStop(this.element, this.animation, frame);
         }else{
@@ -129,6 +131,7 @@ export class ScrollAnimationItem {
 
     onAnimation(frame:number):void {
         const i = this.limitFrameSet(frame);
+        if(i === this.prevScroll)   return;
         this.setAnimationFrame(i - this.getLngResult(this.scrollStart));
     }
     async onWillChange(frame:number){

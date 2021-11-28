@@ -1,3 +1,4 @@
+import { ScrollAnimation } from "./scrollAnimation";
 import { createKeyframes, gotoAndStop } from "./createKeyframes";
 import { createGesture } from "./elementGesture";
 import { getCSSAttribute } from "./inlineAnimationParser";
@@ -56,8 +57,6 @@ box.forEach(async $item => {
             return dragFunction.call(this.closest('.box'), r, e, origin);
         },
         drag        : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
-
-            // console.log(r.direction);
             anis.forEach((item, idx:number) => {
                 let [originX, originY] = origin === undefined ? [0, 0] : origin;
                 const [x, y]   = r.move;
@@ -73,11 +72,8 @@ box.forEach(async $item => {
             return dragFunction.call(this.closest('.box'), r, e, origin);
         },
         dragEnd     : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
-            // console.log(r.direction);
             const dir = r.direction[1];
-
             off();
-
             this.closest('.box').classList.add('transition');
             gotoAndStop(this.closest('.box'), [{transform:''}], 0);
             if(dir < 0) {
@@ -94,9 +90,11 @@ box.forEach(async $item => {
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, 0);
                 }
             });
-            setTimeout(on, 400);
-            return dir < 0 ? [0, -document.documentElement.offsetHeight + 96] : [0, 0];
+            setTimeout(on, 500);
+            return dir < 0 ? [0, -document.documentElement.offsetHeight + 80] : [0, 0];
         },
     });
     on();
-})
+});
+
+const animation = new ScrollAnimation(document.querySelector('.card-content-box') as HTMLElement, '.card-content-box .scroll-animation');

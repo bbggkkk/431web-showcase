@@ -33,9 +33,12 @@
     <title>431Web</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500;900&display=swap" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@100;400;700;900&display=swap" rel="stylesheet">
     <link href="./css/import.css" rel="stylesheet"></head>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -48,135 +51,91 @@
     gtag('config', 'UA-155209386-2');
     </script>
 
-    <style>
-        #box, #box2{
-            width: 200px;
-            height: 200px;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: #1167bd;
-            position: absolute;
-            /* top: 200px;
-            left: 50%; */
-            /* transform: translate(-50%,-50%); */
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 8px 16px rgb(0 0 0 / 30%);
-            user-select:none;
-        }
-
-        .plate {
-            position:fixed;
-            bottom:calc(-200% + 80px);
-            width:100%;
-            height:200%;
-            display:flex; justify-content:center;
-        }
-        .plate-box {
-            width:calc(100% - 24px); height:100%;
-            background:#fff;
-            box-shadow:0 8px 16px rgba(0,0,0,0.2);
-            border-radius:32px 32px 0 0;
-            border:1px solid rgba(0,0,0,0.1);
-            box-sizing:border-box;
-
-            position: relative;
-
-        }
-        .plate-box.open {
-            transform:translate(0, calc(-50% + 96px));
-        }
-
-        .plate-box-wrap {
-            display:flex;
-            flex-direction:column;
-            height:50%;
-        }
-
-        .card-dragbar {
-            position:absolute;
-            width:64px;
-            height:6px;
-            top:0;
-            left:50%;
-            transform:translateX(-50%);
-
-            box-sizing:content-box;
-            padding:12px;
-        }
-        .card-dragbar > div {
-            width:100%;
-            height:100%;
-            background:rgba(0,0,0,0.2);
-            border-radius:calc(100% / (64 / 6)) / 100%;
-        }
-        .card-title-box {
-            display:flex;
-            align-items:center;
-            height:80px;
-        }
-        .card-title {
-            font-weight:500;
-            padding:0 32px;
-            position:relative;
-        }
-        .card-title .title-text {
-            position:absolute;
-            top:50%; left:50%; transform:translate(-50%, -50%);
-        }
-
-        .card-content-box {
-            flex:1;
-            overflow-y:auto;
-        }
-
-        .transition {
-            transition:all 0.4s;
-        }
-        .row {
-            padding:0 24px;
-            margin-bottom:12px;
-        }
-        .title {
-            font-size:1.5em;
-            font-weight:bold;
-            margin-bottom:12px;
-        }
-    </style>
-
 </head>
 <body>
-    
-    <!-- <div class="box" id="box2"  data-animation-0="box-shadow:0 1px 2px rgba(0,0,0,0.3);"
-                                data-animation-100="box-shadow:0 16px 32px rgba(0,0,0,1);"></div>
-    <div class="box" id="box"   data-animation-0="background:red;"
-                                data-animation-100="background:green;"></div> -->
-
     <div class="plate">
-        <div class="box plate-box"  data-animation-0="width:<$return `calc(100% - 24px - ${window.innerWidth > 480 ? window.innerWidth - 480 : 0}px)`;$>; border-width:1px; box-shadow:0 8px 16px rgba(0,0,0,0.2);"
-                                    data-animation-100="width:calc(100% - 0px - 0px); border-width:0px; box-shadow:0 0px 64px rgba(0,0,0,0.1);">
+        <div class="box plate-box plate-animation"  data-animation-0="box-shadow:0 8px 16px rgba(0,0,0,0.2); border:1px solid rgba(0,0,0,0.1);"
+                                                    data-animation-100="box-shadow:0 8px 16px rgba(0,0,0,0.2); border:1px solid rgba(0,0,0,0.2);">
             <div class="card-dragbar">
                 <div></div>
             </div>
             <div class="plate-box-wrap">
                 <div class="card-title-box">
                     <div class="card-title flex-fill flex-box flex-between flex-middle">
-                        <!-- <p class="title-left">홈</p> -->
+                        <p class="title-left">
+                            <!-- <span class="material-icons">keyboard_up</span> -->
+                        </p>
                         <p class="title-text plate-animation"   data-animation-0="opacity:1;"
-                                                                data-animation-100="opacity:0;">Works</p>
-                        <!-- <p class="title-right">메뉴2</p> -->
+                                                                data-animation-100="opacity:0;">소개</p>
+                        <a class="title-right"  href="https://github.com/bbggkkk/scroll-animation" target="_blank">
+                            <span class="install">사용하기</span>
+                        </a>
                     </div>
                 </div>
-                <div class="card-content-box plate-animation"   data-animation-0="opacity:0;"
+                <div class="card-content-box plate-animation"   style="opacity:0;"
+                                                                data-animation-0="opacity:0;"
+                                                                data-animation-50="opacity:1;"
                                                                 data-animation-100="opacity:1;">
                     <div class="row">
-                        <p class="title">안녕하세요</p>
-                        <p>서성일입니다.</p>
+                        <div class="title">
+                            <p class="scroll-animation" data-animation-bind=".animation-title"
+                                                        data-animation-start="<$return this.closest('.row').offsetTop - this.closest('.card-content-box').offsetTop - 64$>"
+                                                        data-animation-end="<$return this.closest('.row').offsetTop - this.closest('.card-content-box').offsetTop$>">Scroll-animation</p>
+                        </div>
+                        <p>스크롤을 함에 따라 애니메이션 키프레임으로 렌더링되는 라이브러리입니다.</p>
                     </div>
+
+                    <p class="binder"></p>
+
+                    <div class="row">
+                        <div class="title">
+                            <p class="scroll-animation" data-animation-bind=".animation-title"
+                                                        data-animation-start="<$return this.closest('.row').offsetTop - this.closest('.card-content-box').offsetTop - 32$>"
+                                                        data-animation-end="<$return this.closest('.row').offsetTop - this.closest('.card-content-box').offsetTop + 32$>">예시</p>
+                        </div>
+                        <a class="in-document-link"     href="https://bbggkkk.github.io/scroll-animation" target="_blank">
+                            <span>예시 페이지 보기</span>
+                            <span class="material-icons">launch</span>
+                        </a>
+                    </div>
+                    
+                    <p class="binder"></p>
+
+                    <div class="row">
+                        <div class="title">
+                            <p class="scroll-animation" data-animation-bind=".animation-title"
+                                                        data-animation-start="<$return this.closest('.row').offsetTop - this.closest('.card-content-box').offsetTop - 32$>"
+                                                        data-animation-end="<$return this.closest('.row').offsetTop - this.closest('.card-content-box').offsetTop + 32$>">사용 방법</p>
+                        </div>
+                        <div>
+                            <div class="num-p">
+                                <p>먼저 애니메이션을 정의해야 합니다. Scroll-animation에서 애니메이션을 정의할 때는 애니메이션을 적용 할 엘리먼트에 data 어트리뷰트를 활용해 정의합니다.</p>
+                            </div>
+                            <pre class="code-box"><code>&lt;div id="animation"
+     data-animation-start="0"
+     data-animation-end="200"
+     data-animation-0="color:red;"
+     data-animation-100="color:blud;"&gt;
+    &lt;p&gt;HELLO&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+                            <div class="num-p">
+                                <p>먼저 애니메이션을 정의해야 합니다.</p>
+                            </div>
+
+                            <div style="height:400vh;"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="hide">
+        <p  class="animation-title" data-animation-0="transform:translateY(calc(0%)) scale(1);"
+                                    data-animation-100="transform:translateY(calc(37.5%)) scale(0.75);"></p>
+    </div>
 
     <script src="./dist/polyfill.js"></script>
     <script src="./dist/main.js"></script>

@@ -17,12 +17,12 @@
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-/*!******************************!*\
-  !*** ./src/sass/import.scss ***!
-  \******************************/
+/*!*****************************!*\
+  !*** ./src/sass/index.scss ***!
+  \*****************************/
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
 /******/ })()
 ;
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=index.js.map

@@ -2,7 +2,10 @@ const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  
 module.exports = [{
-  entry: "./src/index.ts",
+  entry: {
+    index:"./src/index.ts",
+    works:"./src/works.ts"
+  },
   module: {
     rules: [
       {
@@ -18,13 +21,17 @@ module.exports = [{
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      '@src': path.resolve(__dirname, 'src'),
+    },
   },
   output: {
-    filename: "main.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
   },
+  watch:true,
   target:['web', 'es6'],
-  mode:'production'
+  mode:'development'
 },{
   entry: './src/sass/import.scss',
   output: {
@@ -44,5 +51,5 @@ module.exports = [{
     ]
   },
   devtool: 'source-map',
-  mode: 'production'
+  mode: 'development'
 }];

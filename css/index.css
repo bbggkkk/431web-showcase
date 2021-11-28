@@ -1,0 +1,168 @@
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/index.scss ***!
+  \**************************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  all: unset;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+:root {
+  --background:255,255,255;
+  --white:255,255,255;
+  --black:0,0,0;
+  --paper:242,242,242;
+  --dark:24,24,24;
+  --text:#1a1a1a;
+}
+
+.flex-box {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-left {
+  justify-content: flex-start;
+}
+
+.flex-right {
+  justify-content: flex-end;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-top {
+  align-items: flex-start;
+}
+
+.flex-bottom {
+  align-items: flex-end;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-middle {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-row-re {
+  flex-direction: row-reverse;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-col-re {
+  flex-direction: column-reverse;
+}
+
+.flex-com {
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-fill {
+  flex: 1;
+}
+
+.over-h {
+  overflow: hidden;
+}
+
+.no-touch {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.bg-black {
+  background-color: rgb(var(--black));
+}
+
+.t-white {
+  color: rgb(var(--white));
+}
+
+.row {
+  padding: 0 24px;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(var(--white), 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 99;
+}
+.main-header .main-header-box {
+  width: 100%;
+  height: 100%;
+}
+.main-header .main-header-box .wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.main-header .main-header-box .profile {
+  width: 72px;
+  height: 24px;
+  display: flex;
+}
+
+/*# sourceMappingURL=index.css.map*/

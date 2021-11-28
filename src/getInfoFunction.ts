@@ -20,6 +20,7 @@ interface touchEventData {
 export const $createTouchStartFunction = (element:HTMLElement, touchEventInfoFunction:Function, sendDataFunction:Array<Function>, dragFunction:Array<Function>, dragEndFunction:Array<Function>,  callback?:Function) => {
     //touchstart시 실행할 함수
     return (e:TouchEvent) => {
+        if(e.cancelable)
         e.preventDefault();
         document.addEventListener('touchmove', dragFunction[0] as EventListenerOrEventListenerObject, {passive:false});
         document.addEventListener('touchend', dragEndFunction[0] as EventListenerOrEventListenerObject, {passive:false});
@@ -46,6 +47,7 @@ export const $createMouseDownFunction = (element:HTMLElement, touchEventInfoFunc
 export const $createTouchMoveFunction = (element:HTMLElement, touchEventInfoFunction:Function, sendDataFunction:Array<Function>, callback?:Function) => {
     //touchmove시 실행할 함수
     return (e:TouchEvent) => {
+        if(e.cancelable)
         e.preventDefault();
         requestAnimationFrame(async () => {
             const [info, bf] = touchEventInfoFunction ? touchEventInfoFunction(e) : '';
@@ -68,6 +70,7 @@ export const $createMouseMoveFunction = (element:HTMLElement, touchEventInfoFunc
 export const $createTouchEndFunction = (element:HTMLElement, touchEventInfoFunction:Function, sendDataFunction:Array<Function>, dragFunction:Array<Function>, callback?:Function) => {
     //touchend시 실행할 함수
     const rtFunction = (e:TouchEvent) => {
+        if(e.cancelable)
         e.preventDefault();
         document.removeEventListener('touchmove', dragFunction[0] as EventListenerOrEventListenerObject);
         document.removeEventListener('touchend', rtFunction as EventListenerOrEventListenerObject);

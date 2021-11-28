@@ -6,7 +6,11 @@
       "sourceMap": true,
       "target": "es6",
       "outDir": "dist",
-      "module":"es2020"
+      "module":"es2020",
+      "baseUrl": ".",
+      "paths":{
+        "@src/*": ["./src/*"]
+      }
     },
     "include": [
       "src/*"

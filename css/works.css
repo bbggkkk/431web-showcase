@@ -1,0 +1,381 @@
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/works.scss ***!
+  \**************************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  all: unset;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+:root {
+  --background:255,255,255;
+  --white:255,255,255;
+  --black:0,0,0;
+  --paper:242,242,242;
+  --dark:24,24,24;
+  --text:#1a1a1a;
+}
+
+.flex-box {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-left {
+  justify-content: flex-start;
+}
+
+.flex-right {
+  justify-content: flex-end;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-top {
+  align-items: flex-start;
+}
+
+.flex-bottom {
+  align-items: flex-end;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-middle {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-row-re {
+  flex-direction: row-reverse;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-col-re {
+  flex-direction: column-reverse;
+}
+
+.flex-com {
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-fill {
+  flex: 1;
+}
+
+.over-h {
+  overflow: hidden;
+}
+
+.no-touch {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.bg-black {
+  background-color: rgb(var(--black));
+}
+
+.t-white {
+  color: rgb(var(--white));
+}
+
+.row {
+  padding: 0 24px;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(var(--white), 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 99;
+}
+.main-header .main-header-box {
+  width: 100%;
+  height: 100%;
+}
+.main-header .main-header-box .wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.main-header .main-header-box .profile {
+  width: 72px;
+  height: 24px;
+  display: flex;
+}
+
+.plate {
+  position: fixed;
+  bottom: calc(-200% + 64px);
+  width: 100%;
+  height: 200%;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+.plate-box {
+  width: 100%;
+  height: 100%;
+  max-width: 640px;
+  background: rgb(var(--white));
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 32px 32px 0 0;
+  box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.plate-box.open {
+  transform: translate3d(0, calc(-50% + 80px), 0);
+}
+
+.plate-box-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  position: relative;
+  z-index: 0;
+}
+
+.card-dragbar {
+  position: absolute;
+  width: 64px;
+  height: 6px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: content-box;
+  padding: 12px;
+  z-index: 10;
+  user-select: none;
+}
+
+.card-dragbar > div {
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--black), 0.2);
+  border-radius: 9.375%/100%;
+}
+
+.card-title-box {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  position: relative;
+  z-index: 9;
+}
+
+.card-title {
+  font-weight: 500;
+  padding: 0 24px;
+  position: relative;
+}
+
+.card-title .title-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-content-box {
+  flex: 1;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  padding-top: 64px;
+}
+
+.transition {
+  transition: all 0.4s;
+}
+
+.plate .row {
+  padding: 32px 24px 0;
+  min-height: 120px;
+  position: relative;
+  counter-reset: num;
+}
+
+.plate .row::after {
+  content: "";
+  display: block;
+  height: 48px;
+}
+
+.card-content-box > div:nth-of-type(1) {
+  padding: 0 24px;
+}
+
+.card-content-box > div:nth-of-type(2n) {
+  background: rgb(var(--paper));
+}
+
+.card-content-box > div:nth-of-type(2n) .title {
+  background: rgba(var(--paper), 0.75);
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  position: sticky;
+  top: -64px;
+  background: rgba(var(--white), 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  height: 64px;
+  transform: translateX(-24px);
+  width: calc(100% + 48px);
+  padding: 0 24px;
+  z-index: 9;
+  margin-bottom: 12px;
+}
+
+.title > .scroll-animation {
+  transform-origin: left;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.num-p {
+  display: flex;
+  justify-content: flex-start;
+  counter-increment: num;
+  white-space: nowrap;
+  margin-bottom: 12px;
+}
+
+.num-p > p {
+  white-space: normal;
+  flex: 1;
+}
+
+.num-p::before {
+  content: counter(num);
+  margin-top: 0.125em;
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  font-size: 0.875em;
+  background: #1167ab;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.install {
+  background: #1167ab;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 0.875em;
+  color: #fff;
+}
+
+.binder {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.in-document-link {
+  display: inline-flex;
+  align-items: center;
+  color: #1167ab;
+}
+
+.in-document-link > span:not(.material-icons) {
+  text-decoration: underline;
+}
+
+.in-document-link > .material-icons {
+  margin-left: 4px;
+  font-size: 100%;
+  transform: translateY(1px);
+}
+
+.code-box {
+  padding: 8px 12px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: "Nanum Gothic Coding", monospace;
+  line-height: 1.25em;
+  font-size: 0.875em;
+  margin-bottom: 48px;
+}
+
+code {
+  font-family: "Nanum Gothic Coding", monospace;
+}
+
+/*# sourceMappingURL=works.css.map*/

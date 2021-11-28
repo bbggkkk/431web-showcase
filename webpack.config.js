@@ -2,7 +2,10 @@ const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  
 module.exports = [{
-  entry: "./src/index.ts",
+  entry: {
+    index:"./src/index.ts",
+    works:"./src/works.ts"
+  },
   module: {
     rules: [
       {
@@ -18,22 +21,29 @@ module.exports = [{
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      '@src': path.resolve(__dirname, 'src'),
+    },
   },
   output: {
-    filename: "main.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
   },
   watch:true,
   target:['web', 'es6'],
   mode:'development'
 },{
-  entry: './src/sass/import.scss',
+  entry: {
+    index:"./src/sass/index.scss",
+    works:"./src/sass/works.scss"
+  },
   output: {
-    path: path.resolve(__dirname, 'css')
+    path: path.resolve(__dirname, 'css'),
+    filename: "[name].js",
   },
   plugins: [
     // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
-    new MiniCssExtractPlugin({ filename: 'import.css'})
+    new MiniCssExtractPlugin({ filename: '[name].css'})
   ],
   module: {
     rules: [

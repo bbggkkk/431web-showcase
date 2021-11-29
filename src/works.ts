@@ -1,5 +1,5 @@
 import { header } from '@src/components/header';
-import { ScrollAnimation } from "./scrollAnimation";
+import { ScrollAnimation } from "@src/library/scrollAnimation";
 import '@src/function/plateBox'; //하단 설명상자 이벤트 추가
 
 

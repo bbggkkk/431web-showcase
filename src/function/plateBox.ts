@@ -1,17 +1,23 @@
-import { createKeyframes, gotoAndStop } from "@src/createKeyframes";
-import { createGesture } from "@src/elementGesture";
-import { getCSSAttribute } from "@src/inlineAnimationParser";
+import { createKeyframes, gotoAndStop } from "@src/library/createKeyframes";
+import { createGesture } from "@src/library/elementGesture";
+import { getCSSAttribute } from "@src/library/inlineAnimationParser";
 
 const sb  = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sab"));
 console.log(sb);
 const box = document.querySelectorAll('.card-dragbar') as NodeList;
 
 
-const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any) {
+const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any, max) {
     let [originX, originY] = (origin === undefined) ? [0, -sb] : origin;
     
     const [x, y]   = r.move;
-    [originX, originY] = [originX+x, originY+y];
+    if(originY > 0){
+        [originX, originY] = [originX+(x/(originY - 0 + 1)), originY+(y/(originY - 0 + 1))];
+    }else if(originY < max){
+        [originX, originY] = [originX-(x/(originY - max + 1)), originY-(y/(originY - max + 1))];
+    }else{
+        [originX, originY] = [originX+x, originY+y];
+    }
     gotoAndStop(this, [{transform:`translate(0, calc(${originY}px))`}], 0);
     // gotoAndStop(this, [{transform:`translate(calc(${originX}px), calc(${originY}px))`}], 0);
 
@@ -52,7 +58,7 @@ box.forEach(async $item => {
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY-sb)));
                 }
             });
-            return dragFunction.call(this.closest('.box'), r, e, origin);
+            return dragFunction.call(this.closest('.box'), r, e, origin, Math.max(-document.documentElement.offsetHeight + 128, -840));
         },
         drag        : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
             anis.forEach((item, idx:number) => {
@@ -67,7 +73,7 @@ box.forEach(async $item => {
                     gotoAndStop(eleList[idx] as HTMLElement, item as any, Math.abs(Math.round(originY-sb)));
                 }
             });
-            return dragFunction.call(this.closest('.box'), r, e, origin);
+            return dragFunction.call(this.closest('.box'), r, e, origin, Math.max(-document.documentElement.offsetHeight + 128, -840));
         },
         dragEnd     : function(r:any, e:TouchEvent|MouseEvent, origin:any) {
             const dir = r.direction[1];

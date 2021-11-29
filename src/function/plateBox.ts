@@ -7,20 +7,19 @@ console.log(sb);
 const box = document.querySelectorAll('.card-dragbar') as NodeList;
 
 
-const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any, max) {
+const dragFunction = async function(r:any, e:TouchEvent|MouseEvent, origin:any, max:number) {
     let [originX, originY] = (origin === undefined) ? [0, -sb] : origin;
     
     const [x, y]   = r.move;
     if(originY > 0){
-        [originX, originY] = [originX+(x/(originY - 0 + 1)), originY+(y/(originY - 0 + 1))];
+        [originX, originY] = [originX+(x/(originY - 0)), originY+(y/(originY - 0))];
     }else if(originY < max){
-        [originX, originY] = [originX-(x/(originY - max + 1)), originY-(y/(originY - max + 1))];
+        [originX, originY] = [originX-(x/(originY - max)), originY-(y/(originY - max))];
     }else{
         [originX, originY] = [originX+x, originY+y];
     }
     gotoAndStop(this, [{transform:`translate(0, calc(${originY}px))`}], 0);
     // gotoAndStop(this, [{transform:`translate(calc(${originX}px), calc(${originY}px))`}], 0);
-
     return [originX, originY];
 }
 

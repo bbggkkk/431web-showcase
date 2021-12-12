@@ -1,18 +1,18 @@
 {
-    "compilerOptions": {
-      "noImplicitAny": false,
-      "noEmitOnError": true,
-      "removeComments": false,
-      "sourceMap": true,
-      "target": "es6",
-      "outDir": "dist",
-      "module":"es2020",
-      "baseUrl": ".",
-      "paths":{
-        "@src/*": ["./src/*"]
-      }
-    },
-    "include": [
-      "src/*"
-    ]
+	"extends": "@tsconfig/svelte/tsconfig.json",
+	"include": ["src/**/*", "src/node_modules/**/*","src/*"],
+	"exclude": ["node_modules/*", "__sapper__/*", "static/*"],
+	"compilerOptions": {
+		"noImplicitAny": false,
+		"noEmitOnError": true,
+		"removeComments": false,
+		"sourceMap": true,
+		"target": "es2020",
+		"outDir": "dist",
+		"module":"es2020",
+		"baseUrl": ".",
+		"paths":{
+		  "@src/*": ["./src/*"]
+		}
+	}
 }

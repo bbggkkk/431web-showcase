@@ -1,59 +1,78 @@
-const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
- 
-module.exports = [{
-  entry: {
-    index:"./src/index.ts",
-    works:"./src/works.ts"
-  },
-  module: {
-    rules: [
-      {
-        test: /\.worker\.js$|\.worker\.ts$/,
-        use: { loader: "worker-loader" },
-      },
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      '@src': path.resolve(__dirname, 'src'),
-    },
-  },
-  output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
-  },
-  watch:true,
-  target:['web', 'es6'],
-  mode:'development'
-},{
-  entry: {
-    index:"./src/sass/index.scss",
-    works:"./src/sass/works.scss"
-  },
-  output: {
-    path: path.resolve(__dirname, 'css'),
-    filename: "[name].js",
-  },
-  plugins: [
-    // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
-    new MiniCssExtractPlugin({ filename: '[name].css'})
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        exclude: /node_modules/
-      }
-    ]
-  },
-  devtool: 'source-map',
-  mode: 'development'
-}];
+const path = require('path');
+const sveltePreprocess = require('svelte-preprocess');
+
+const mode = process.env.NODE_ENV || 'development';
+const prod = mode === 'production';
+
+module.exports = {
+	entry: {
+		'build/bundle': ['./src/main.ts']
+	},
+	resolve: {
+		alias: {
+			'@src': path.resolve(__dirname, 'src'),
+			svelte: path.dirname(require.resolve('svelte/package.json'))
+		},
+		extensions: ['.mjs', '.js', '.ts', '.svelte'],
+		mainFields: ['svelte', 'browser', 'module', 'main']
+	},
+	output: {
+		path: path.join(__dirname, '/public'),
+		filename: '[name].js',
+		chunkFilename: '[name].[id].js'
+	},
+	module: {
+			rules: [
+				{
+					test: /\.(png|svg|jpg|jpeg|gif)$/i,
+					use: [
+						'file-loader',
+					],
+				},
+				{
+					test: /\.ts$/,
+					loader: 'ts-loader',
+					exclude: /node_modules/
+				},
+				{
+				test: /\.svelte$/,
+				use: {
+					loader: 'svelte-loader',
+					options: {
+						compilerOptions: {
+							dev: !prod
+						},
+						emitCss: prod,
+						hotReload: !prod,
+							preprocess: sveltePreprocess({ sourceMap: !prod })
+					}
+				}
+			},
+			{
+				test: /\.css$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader'
+				]
+			},
+			{
+				// required to prevent errors from Svelte on Webpack 5+
+				test: /node_modules\/svelte\/.*\.mjs$/,
+				resolve: {
+					fullySpecified: false
+				}
+			}
+		]
+	},
+	mode,
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: '[name].css'
+		})
+	],
+	devtool: prod ? false : 'source-map',
+	devServer: {
+		hot: true
+	}
+};

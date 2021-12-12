@@ -1,33 +1,30 @@
 {
-  "name": "431web-showcase",
+  "name": "svelte-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "webpack",
-    "build": "webpack --config webpack.build.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bbggkkk/431web-showcase.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bbggkkk/431web-showcase/issues"
-  },
-  "homepage": "https://github.com/bbggkkk/431web-showcase#readme",
-  "dependencies": {
-    "ts-loader": "^9.2.6",
-    "typescript": "^4.5.2",
-    "webpack": "^5.64.2",
-    "webpack-cli": "^4.9.1",
-    "worker-loader": "^3.0.8"
-  },
   "devDependencies": {
-    "css-loader": "^6.5.1",
+    "@tsconfig/svelte": "^1.0.10",
+    "@types/node": "^14.11.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.0.1",
     "mini-css-extract-plugin": "^2.4.5",
-    "sass": "^1.43.4",
+    "svelte": "^3.31.2",
+    "svelte-check": "^1.0.46",
+    "svelte-loader": "^3.0.0",
+    "svelte-preprocess": "^4.3.0",
+    "ts-loader": "^8.0.4",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.3",
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "webpack serve --content-base public",
+    "validate": "svelte-check"
+  },
+  "dependencies": {
+    "file-loader": "^6.2.0",
     "sass-loader": "^12.3.0"
   }
 }

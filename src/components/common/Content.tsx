@@ -1,5 +1,4 @@
 import { theme } from 'assets/style/theme';
-import React, { ReactChild }  from 'react';
 import styled from 'styled-components';
 
 const ContentComponent = styled.div< { backgroundColor : string } >`

@@ -1,4 +1,3 @@
-import React, { ReactChild }    from 'react';
 import styled                   from 'styled-components';
 import { theme }                from 'assets/style/theme';
 import Logo                     from 'components/common/Logo';

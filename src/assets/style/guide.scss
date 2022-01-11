@@ -6,6 +6,7 @@ body {
     font-size:var(--t-size-body-1);
     font-weight:var(--t-weight-normal);
     color:var(--t-color-900);
+    overflow-x:hidden;
 }
 a {
     color:inherit;

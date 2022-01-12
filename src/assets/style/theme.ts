@@ -2,15 +2,15 @@ export const theme:any = {
     color : {
         'primary'       : ' #1167AB',
         'secondary'     : ' #FFC72C',
-        'tertiary'      : ' #2F3539',
+        'tertiary'      : ' #1A2024',
 
         'primary-rgb'   : ' 17, 103, 171',
         'secondary-rgb' : ' 255, 199, 44',
-        'tertiary-rgb'  : ' 47, 53, 57',
+        'tertiary-rgb'  : ' 26, 32, 36',
 
         'primary-hsl'   : ' 206, 82%, 37%',
         'secondary-hsl' : ' 44, 100%, 59%',
-        'tertiary-hsl'  : ' 204, 10%, 20%',
+        'tertiary-hsl'  : ' 204, 28%, 14%',
 
         'primary-50'      : ' #E8F3FD',
         'primary-100'     : ' #B9DCF8',
@@ -52,7 +52,7 @@ export const theme:any = {
         'danger'     : ' #EE3333',
         'active'     : ' #1167AB',
 
-        'base-ui'    : ' #A7ADB1',
+        'base-ui'    : ' #C3C6CD',
         'disable-ui' : ' #DDE3E7',
         /* 시스템 컬러 */
 
@@ -137,5 +137,8 @@ export const theme:any = {
         'weight-bold'     : ' 700',
         'weight-black'    : ' 900',
         /* weight */
+    },
+    size : {
+        'wrap' : '24px'
     }
 }

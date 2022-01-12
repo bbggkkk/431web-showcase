@@ -13,8 +13,8 @@ const TitleComponent = styled.div`
     
     .main-title {
         width:100%;
-        height:150vh;
-        position:absolute;
+        height:50vh;
+        position:fixed;
         top:0;
         
         .title-wrap {
@@ -60,17 +60,18 @@ function Title() {
         <TitleComponent className="main-wrap">
             <PlaceHolder/>
             <div className="main-title box"
-                        data-animation-start="<$ return parseInt(window.outerHeight/1.5); $>"
-                        data-animation-end="<$ return parseInt(window.outerHeight*1.5); $>"
-                        data-animation-0="transform:scale(1) translate(0%, 0%); opacity:1;"
-                        data-animation-50="opacity:1;"
-                        data-animation-100="transform:scale(0.2) translate(100%, 100%); opacity:0;">
-                <div    className='title-wrap box' ref={target}
+                        data-animation-start="0"
+                        data-animation-end="300"
+                        data-animation-0="transform:translate(0%, 0px);"
+                        data-animation-50="transform:translate(0%, 100px);"
+                        data-animation-100="transform:translate(0%, 200px);"
+                        data-animation-bezier="1,0,0,1">
+                <div    className='title-wrap ' ref={target}
                         data-animation-start="0"
                         data-animation-end="<$ return parseInt(window.outerHeight/2); $>"
                         data-animation-0="padding:0px;"
                         data-animation-100="padding:8px;">
-                    <div    className='title-box box'
+                    <div    className='title-box '
                             data-animation-start="0"
                             data-animation-end="<$ return parseInt(window.outerHeight/2); $>"
                             data-animation-0="border-radius:0px;"

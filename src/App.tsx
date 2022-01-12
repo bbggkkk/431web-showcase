@@ -6,8 +6,8 @@ import Title    from 'components/main/Title';
 function App() {
     return (
         <div className="App">
-            <Title></Title>
             <Header></Header>
+            {/* <Title></Title>
             <div style={{
                 maxWidth:960,
                 margin:'0 auto',
@@ -26,7 +26,7 @@ function App() {
                 <Content></Content>
                 <Content></Content>
                 <Content></Content>
-            </div>
+            </div> */}
         </div>
     );
 }

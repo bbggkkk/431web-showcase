@@ -1,34 +1,60 @@
+import { ScrollAnimation } from 'assets/library/scrollAnimation';
 import 'assets/style/guide.scss';
 import Content  from 'components/common/Content';
 import Header   from 'components/common/Header';
+import SectionScrollAnimation from 'components/Contents/SectionScrollAnimation';
 import Title    from 'components/main/Title';
+import { useEffect } from 'react';
+import styled from 'styled-components';
 
 function App() {
     return (
         <div className="App">
             <Header></Header>
-            {/* <Title></Title>
-            <div style={{
-                maxWidth:960,
-                margin:'0 auto',
-                padding:8,
-                display:'grid',
-                gridTemplateColumns:'1fr 1fr',
-                gridTemplateRows:'1fr 1fr 1fr 1fr 1fr 1fr',
-                gap:8,
-            }}>
-                <Content>
-                    <p style={{position:'absolute', fontWeight:'900', top:'25%', left:'50%', transform:'translate(-50%, -50%)', fontSize:'300%', color:'#fff'}}>431Web</p>
-                    <img src="https://images.unsplash.com/photo-1641765770550-e2a1e9a61082?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0MXx8fGVufDB8fHx8" style={{width:'100%',height:'100%',objectFit:'cover'}} alt="title"/>
-                </Content>
-                <Content></Content>
-                <Content></Content>
-                <Content></Content>
-                <Content></Content>
-                <Content></Content>
-            </div> */}
+            <Title></Title>
+            <SectionTitle/>
+            <SectionScrollAnimation/>
+            <div style={{height:'200vh'}}></div>
         </div>
     );
+}
+
+
+const SectionTitleComponent = styled.section`
+    position:relative;
+    height:50vh;
+    background:${({theme}) => theme.color.background};
+    color:${({theme}) => theme.mode === 'dark' ? '#C3C6CD' : '#666E7F'};
+
+    .box {
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+
+        font-size:${({theme}) => theme.typo['size-title-1']};
+        font-weight:${({theme}) => theme.typo['weight-bold']};
+    }
+`
+function SectionTitle(){
+    useEffect(() => {
+        const scroll = new ScrollAnimation(window, '.section-title .box')
+    }, []);
+    return (
+        <SectionTitleComponent className="section-title">
+            <div className="box"
+                    data-animation-start="0"
+                    data-animation-end="<$ return window.outerHeight*1.5; $>"
+                    data-animation-0="opacity:0; transform:translate(-50%, calc(-25vh - 0%));"
+                    data-animation-40="opacity:1;"
+                    data-animation-60="opacity:1;"
+                    data-animation-100="opacity:0; transform:translate(-50%, calc(25vh - 100%));">
+                <p>제가 만든</p>
+                <p>작업물들을</p>
+                <p>소개합니다</p>
+            </div>
+        </SectionTitleComponent>
+    )
 }
 
 export default App;

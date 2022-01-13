@@ -3,6 +3,7 @@
 @import "./font.scss";
 
 body {
+    background:var(--c-tertiary);
     font-size:var(--t-size-body-1);
     font-weight:var(--t-weight-normal);
     color:var(--t-color-900);

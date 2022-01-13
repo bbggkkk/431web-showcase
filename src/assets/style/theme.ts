@@ -1,5 +1,9 @@
 export const theme:any = {
+    mode  : 'dark',
     color : {
+        'background'    : '#1A2024',
+        'text'          : '#fff',
+        
         'primary'       : ' #1167AB',
         'secondary'     : ' #FFC72C',
         'tertiary'      : ' #1A2024',

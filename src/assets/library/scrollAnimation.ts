@@ -90,8 +90,8 @@ export class ScrollAnimationItem {
     }
 
     setAttributeValue():void{
-        this.scrollStart = isEval((this.element as any).getAttribute('data-animation-start'), this.element);
-        this.scrollEnd   = isEval((this.element as any).getAttribute('data-animation-end'), this.element);
+        this.scrollStart = isEval((this.element.getAttribute('data-animation-bind') ? document.querySelector(this.element.getAttribute('data-animation-bind')).getAttribute('data-animation-start') : (this.element as any).getAttribute('data-animation-start') ), this.element);
+        this.scrollEnd   = isEval((this.element.getAttribute('data-animation-bind') ? document.querySelector(this.element.getAttribute('data-animation-bind')).getAttribute('data-animation-end') : (this.element as any).getAttribute('data-animation-end') ), this.element);
     }
     setLength():void {
         this.length      = () => {

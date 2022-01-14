@@ -2,6 +2,7 @@ import { ScrollAnimation } from 'assets/library/scrollAnimation';
 import 'assets/style/guide.scss';
 import Content  from 'components/common/Content';
 import Header   from 'components/common/Header';
+import SectionElementGesture from 'components/Contents/SectionElementGesture';
 import SectionScrollAnimation from 'components/Contents/SectionScrollAnimation';
 import Title    from 'components/main/Title';
 import { useEffect } from 'react';
@@ -14,6 +15,7 @@ function App() {
             <Title></Title>
             <SectionTitle/>
             <SectionScrollAnimation/>
+            <SectionElementGesture/>
             <div style={{height:'200vh'}}></div>
         </div>
     );

@@ -1,4 +1,5 @@
 import { ScrollAnimation } from "assets/library/scrollAnimation";
+import Button from "components/common/Button";
 import Phone from "components/common/Phone";
 import { useEffect }    from "react";
 import styled from "styled-components";
@@ -23,22 +24,29 @@ const SectionScrollAnimationComponent = styled.section`
                 height:50%;
             }
             .text-wrap {
-                display:flex;
-                align-items:center;
                 font-size:${({theme}) => theme.typo['size-title-3']};
                 font-weight:${({theme}) => theme.typo['weight-bold']};
                 position:relative;
 
                 .position {
-                    position:absolute;
-                    top:50%;
-                    transform:translateY(-50%);
+                    height:100%;
+                    display:flex;
+                    align-items:center;
                 }
                 .position.title {
                     font-size:${({theme}) => theme.typo['size-title-1']};
                 }
+
+                .box {
+                    height:100%;
+                }
+
+                .goto-git {
+                    margin-top:16px;
+                }
             }
             .phone-wrap {
+                position:relative;
                 overflow:hidden;
             }
         }
@@ -54,26 +62,38 @@ function SectionScrollAnimation(){
             <div className="wrap">
                 <div className="content">
                     <div className="text-wrap">
-                        <div className="position title">
-                            <p className="box"
-                               data-animation-bind=".section-1 .animator"
-                               data-animation-index="0"
-                               data-animation-lng="6">Scroll</p>
-                            <p className="box"
-                               data-animation-bind=".section-1 .animator"
-                               data-animation-index="1"
-                               data-animation-lng="6">Animation</p>
+                        <div className="box"
+                            data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop + (window.outerHeight*0.25)); $>"
+                            data-animation-end="<$ return Math.round(this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight - (window.outerHeight*1.25)); $>"
+                            data-animation-0="transform:translateY(0%);"
+                            data-animation-100="transform:translateY(-200%);">
+                            <div className="position title">
+                                <div>
+                                    <p>Scroll</p>
+                                    <p>Animation</p>
+                                </div>
+                            </div>
+                            <div className="position">
+                                <div>
+                                    <p>스크롤에 반응하는</p>
+                                    <p>애니메이션을 편리하게</p>
+                                    <p>만드는 라이브러리</p>
+                                </div>
+                            </div>
+                            <div className="position">
+                                <div>
+                                    <p>깃허브에서 보기</p>
+                                    <div className="goto-git">
+                                        <a href="https://github.com/bbggkkk/scroll-animation" target="_blank" title="scroll-animation">
+                                            <Button type="on">
+                                                보러가기
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                                            </Button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        {/* <div className="position">
-                            <p>스크롤에 반응하는</p>
-                            <p>애니메이션을 편리하게</p>
-                            <p>만드는 라이브러리</p>
-                        </div> */}
-                        <div    className="animator"
-                                data-animation-start="<$ return Math.round(this.closest('.section-wrap').offsetTop + ((+this.getAttribute('data-animation-index')-0) * (window.outerHeight / (+this.getAttribute('data-animation-lng'))) )); $>"
-                                data-animation-end="<$ return Math.round(this.closest('.section-wrap').offsetTop + ((+this.getAttribute('data-animation-index')+1) * (window.outerHeight / (+this.getAttribute('data-animation-lng'))) )); $>"
-                                data-animation-0="transform:translateY(50%); opacity:0;"
-                                data-animation-100="transform:translateY(0%); opacity:1;"></div>
                     </div>
                     <div className="phone-wrap">
                         <Phone width="100%" height="200%"></Phone>

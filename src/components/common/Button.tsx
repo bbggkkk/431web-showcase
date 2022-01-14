@@ -16,7 +16,7 @@ function Button(props){
         padding:${({size})=>size === 'small' ? '4px 12px' : '12px 16px'};
         background:${({theme})=>getBackgroundColor(type, theme)};
         color:${({theme})=>getColor(type, theme)};
-        font-size:${({size, theme})=>size === 'small' ? theme.typo['size-ui-2'] : theme.typo['size-subtitle-1']};
+        font-size:${({size, theme})=>size === 'small' ? theme.typo['size-ui-2'] : theme.typo['size-body-1']};
         font-weight:${({theme}) => theme.typo['weight-bold']};
         position:relative;
         overflow:hidden;

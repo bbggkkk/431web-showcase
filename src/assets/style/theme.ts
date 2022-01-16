@@ -1,5 +1,6 @@
 export const theme:any = {
     mode  : 'dark',
+    basicWidth : '960px',
     color : {
         'background'    : '#1A2024',
         'text'          : '#fff',

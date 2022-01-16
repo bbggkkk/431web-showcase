@@ -8,16 +8,20 @@ import Title    from 'components/main/Title';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 
+const AppWrap = styled.div`
+    width:100%;
+`
+
 function App() {
     return (
-        <div className="App">
+        <AppWrap className="App">
             <Header></Header>
             <Title></Title>
             <SectionTitle/>
             <SectionScrollAnimation/>
             <SectionElementGesture/>
             <div style={{height:'200vh'}}></div>
-        </div>
+        </AppWrap>
     );
 }
 
@@ -33,6 +37,7 @@ const SectionTitleComponent = styled.section`
         top:50%;
         left:50%;
         transform:translate(-50%, -50%);
+        white-space:nowrap;
 
         font-size:${({theme}) => theme.typo['size-title-1']};
         font-weight:${({theme}) => theme.typo['weight-bold']};
@@ -46,7 +51,7 @@ function SectionTitle(){
         <SectionTitleComponent className="section-title">
             <div className="box"
                     data-animation-start="0"
-                    data-animation-end="<$ return window.outerHeight*1.5; $>"
+                    data-animation-end="<$ return Math.round(window.outerHeight*1.5); $>"
                     data-animation-0="opacity:0; transform:translate(-50%, calc(-25vh - 0%));"
                     data-animation-40="opacity:1;"
                     data-animation-60="opacity:1;"

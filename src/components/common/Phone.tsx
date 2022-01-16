@@ -16,7 +16,7 @@ function Phone({width = '360px', height = '680px', ...props}){
             height:100%;
             box-sizing:border-box;
             padding:14px;
-            border-radius:59px;
+            border-radius:58px;
             background:${({theme}) => theme.mode === 'dark' ? '#0E0D12' : '#EBECEE'};
 
             .screen {
@@ -27,10 +27,41 @@ function Phone({width = '360px', height = '680px', ...props}){
                 background:${({theme}) => theme.mode === 'dark' ? '#2F3539' : '#fff'};
             }
         }
+
+
+        @media screen and (min-width:740px) and (max-width:1023px) {
+            .frame-2 {
+                padding:20px;
+
+                .screen {
+                    border-radius:38px;
+                }
+            }
+        }
+        @media screen and (min-width:1024px) and (max-width:1279px) {
+            .frame-2 {
+                padding:20px;
+
+                .screen {
+                    border-radius:38px;
+                }
+            }
+        }
+        @media screen and (min-width:1280px) {
+            border-radius:16px;
+            .frame-2 {
+                padding:20px;
+                border-radius:14px;
+
+                .screen {
+                    border-radius:0px;
+                }
+            }
+        }
     `;
 
     return (
-        <PhoneComponent>
+        <PhoneComponent className="phone-component">
             <div className="frame-2">
                 <div className="screen">
                     {props.children}

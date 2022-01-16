@@ -13,6 +13,8 @@ const HeaderComponent = styled.header`
     backdrop-filter:blur(6px);
 
     .box {
+        max-width:${({theme}) => theme.basicWidth};
+        margin:0 auto;
         height:100%;
         display:flex;
         justify-content:center;

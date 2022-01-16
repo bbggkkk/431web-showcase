@@ -7,6 +7,8 @@ import styled from "styled-components";
 const SectionScrollAnimationComponent = styled.section`
     width:100%;
     height:200vh;
+    max-width:${({theme}) => theme.basicWidth};
+    margin:0 auto;
     position:relative;
 
 
@@ -74,12 +76,14 @@ function SectionScrollAnimation(props){
             <div className="wrap">
                 <div className="content">
                     
-                    <div className="phone-wrap box"
+                    <div className="phone-wrap"
                         data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
                         data-animation-end="<$ return Math.round(this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight); $>"
                         data-animation-0="transform:translateY(10%);"
                         data-animation-100="transform:translateY(-10%);">
-                        <Phone width="100%" height="200%"></Phone>
+                        <Phone width="100%" height="200%">
+                            <Ani/>
+                        </Phone>
                     </div>
                 </div>
             </div>
@@ -118,6 +122,30 @@ function SectionScrollAnimation(props){
                 </div>
             </div>
         </SectionScrollAnimationComponent>
+    )
+}
+
+const AniWrap = styled.div`
+    width:100%;
+    height:50%;
+    position:relative;
+    background:green;
+`
+
+function Ani(){
+    useEffect(() => {
+        const scroll = new ScrollAnimation(window, '.section-1 .animation .box')
+    }, []);
+    return (
+        <AniWrap className="animation">
+            <div    className="box"
+                    data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+                    data-animation-0="opacity:0;"
+                    data-animation-100="opacity:1;">
+                test
+            </div>
+        </AniWrap>
     )
 }
 

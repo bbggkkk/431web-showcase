@@ -7,6 +7,8 @@ import styled from "styled-components";
 const SectionElementGestureComponent = styled.section`
     width:100%;
     height:200vh;
+    max-width:${({theme}) => theme.basicWidth};
+    margin:0 auto;
     position:relative;
 
 
@@ -75,17 +77,16 @@ function SectionElementGesture(props){
     }, []);
     return (
         <SectionElementGestureComponent className="section-wrap section-2">
-
             <div className="wrap">
                 <div className="content">
-                    
-                    <div className="phone-wrap box"
+                    <div className="phone-wrap"
                         data-animation-start="<$ return Math.round(this.closest('.section-2').offsetTop); $>"
                         data-animation-end="<$ return Math.round(this.closest('.section-2').offsetTop + this.closest('.section-2').offsetHeight); $>"
                         data-animation-0="transform:translateY(-10%);"
                         data-animation-100="transform:translateY(-30%);">
                         <div className="phone">
-                            <Phone width="100%" height="200%"></Phone>
+                            <Phone width="100%" height="200%">
+                            </Phone>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { useRef, useEffect }        from 'react';
+import { useEffect, useState }        from 'react';
 import styled                       from 'styled-components';
 import { ScrollAnimation }          from 'assets/library/scrollAnimation';
 import Button from 'components/common/Button';
@@ -12,6 +12,8 @@ const TitleComponent = styled.div`
     position:relative;
     padding:0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
     background:${({theme}) => theme.color.background};
+    
+    transition:background 0.4s;
 
     & > div {
         width:100%;
@@ -40,6 +42,8 @@ const TitleComponent = styled.div`
         left:24px;
         top:50%;
         transform:translateY(-50%);
+
+        transition:color 0.4s;
 
         color:${({theme}) => theme.color.text};
         font-size:${({theme}) => theme.typo['size-title-1']};
@@ -104,8 +108,12 @@ const TitleComponent = styled.div`
 `
 
 function Title() {
+    const [isRun, setRun] = useState(true);
     useEffect(()=>{
-        const scrollAnimation = new ScrollAnimation(window, '.main-wrap .box')
+        if(isRun){
+            new ScrollAnimation(window, '.main-wrap .box');
+            setRun(false);
+        }
     },[]);
     return (
         <TitleComponent className="main-wrap">

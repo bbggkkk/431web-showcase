@@ -40,4 +40,3 @@ declare global {
 if(!(typeof exports === 'object' && typeof module !== 'undefined')){
     window.ScrollAnimation = ScrollAnimation;
 }
-console.log(new ScrollAnimation(window, '.target'));

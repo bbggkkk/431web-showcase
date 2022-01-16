@@ -1,7 +1,7 @@
 import { ScrollAnimation } from "assets/library/scrollAnimation";
 import Button from "components/common/Button";
 import Phone from "components/common/Phone";
-import { useEffect }    from "react";
+import { useEffect, useState }    from "react";
 import styled from "styled-components";
 
 const SectionElementGestureComponent = styled.section`
@@ -23,6 +23,8 @@ const SectionElementGestureComponent = styled.section`
             top:0;
             padding:0 24px;
             width:calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right));
+
+            transition:color 0.4s;
     
             @media screen and (min-width:1024px) {
                 font-size:${({theme}) => theme.typo['size-title-2']};
@@ -101,8 +103,12 @@ const SectionElementGestureComponent = styled.section`
 `
 
 function SectionElementGesture(props){
+    const [isRun, setRun] = useState(true);
     useEffect(() => {
-        const scroll = new ScrollAnimation(window, '.section-2 .box')
+        if(isRun){
+            new ScrollAnimation(window, '.section-2 .box');
+            setRun(false);
+        }
     }, []);
     return (
         <SectionElementGestureComponent className="section-wrap section-2">
@@ -191,8 +197,12 @@ const AniWrap = styled.div`
 `
 
 function Ani(){
+    const [isRun, setRun] = useState(true);
     useEffect(() => {
-        const scroll = new ScrollAnimation(window, '.section-2 .animation-wrap .animation')
+        if(isRun){
+            // new ScrollAnimation(window, '.section-2 .animation-wrap .animation');
+            setRun(false);
+        }
     }, []);
     return (
         <AniWrap className="animation-wrap">

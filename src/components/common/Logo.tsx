@@ -4,6 +4,7 @@ function Logo(props:any) {
     
     const LogoSvg = styled.div `
         > svg * {
+            transition:fill 0.4s;
             fill:${({theme}) => theme.color.text};
         }
     `

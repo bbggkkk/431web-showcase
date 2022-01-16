@@ -11,6 +11,7 @@ declare module "styled-components" {
       primary:string;
       tertiary:string;
       backgroundRgb:string;
+      secondary:string;
     };
     typo:any;
     mode:string;

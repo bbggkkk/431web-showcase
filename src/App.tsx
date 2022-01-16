@@ -4,13 +4,21 @@ import Header   from 'components/common/Header';
 import SectionElementGesture from 'components/Contents/SectionElementGesture';
 import SectionScrollAnimation from 'components/Contents/SectionScrollAnimation';
 import Title    from 'components/main/Title';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
+import { ThemeProvider }      from 'styled-components';
+import { theme, themeLight }  from 'assets/style/theme';
+
 const GlobalStyle = createGlobalStyle`
+    * {
+        -webkit-tap-highlight-color:transparent;
+    }
     body{
         background:${({theme}) => theme.color.background};
         color:${({theme}) => theme.color.text};
+        
+        transition:background 0.4s;
     }
 `;
 const AppWrap = styled.div`
@@ -18,18 +26,19 @@ const AppWrap = styled.div`
 `
 
 function App() {
+    const [isDark, setIsDark] = useState(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? true : !window.matchMedia ? true : false);
     return (
-        <>
+        <ThemeProvider theme={isDark ? theme : themeLight}>
             <GlobalStyle/>
             <AppWrap className="App">
-                <Header></Header>
+                <Header setTheme={setIsDark} isDark={isDark}></Header>
                 <Title></Title>
                 <SectionTitle/>
                 <SectionScrollAnimation/>
                 <SectionElementGesture/>
                 <div style={{height:'200vh'}}></div>
             </AppWrap>
-        </>
+        </ThemeProvider>
     );
 }
 
@@ -39,6 +48,8 @@ const SectionTitleComponent = styled.section`
     height:50vh;
     background:${({theme}) => theme.color.background};
     color:${({theme}) => theme.mode === 'dark' ? '#C3C6CD' : '#666E7F'};
+
+    transition:background 0.4s, color 0.4s;
 
     .box {
         position:absolute;
@@ -57,8 +68,12 @@ const SectionTitleComponent = styled.section`
     }
 `
 function SectionTitle(){
+    const [isRun, setRun] = useState(true);
     useEffect(() => {
-        const scroll = new ScrollAnimation(window, '.section-title .box')
+        if(isRun){
+            new ScrollAnimation(window, '.section-title .box');
+            setRun(false);
+        }
     }, []);
     return (
         <SectionTitleComponent className="section-title">

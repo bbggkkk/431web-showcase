@@ -11,6 +11,7 @@ function Phone({width = '360px', height = '680px', ...props}){
         box-sizing:border-box;
 
         .frame-2 {
+            transition:background 0.4s;
             width:100%;
             height:100%;
             box-sizing:border-box;
@@ -19,6 +20,7 @@ function Phone({width = '360px', height = '680px', ...props}){
             background:${({theme}) => theme.mode === 'dark' ? '#0E0D12' : '#EBECEE'};
 
             .screen {
+                transition:background 0.4s;
                 width:100%;
                 height:100%;
                 box-sizing:border-box;

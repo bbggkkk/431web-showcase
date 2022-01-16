@@ -2,15 +2,11 @@ import React                  from 'react';
 import ReactDOM               from 'react-dom';
 import reportWebVitals        from './reportWebVitals';
 import App                    from './App';
-import { ThemeProvider }      from 'styled-components';
-import { theme, themeLight }  from 'assets/style/theme';
 // import registerServiceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

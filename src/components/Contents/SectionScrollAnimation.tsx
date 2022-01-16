@@ -1,7 +1,7 @@
 import { ScrollAnimation } from "assets/library/scrollAnimation";
 import Button from "components/common/Button";
 import Phone from "components/common/Phone";
-import { useEffect }    from "react";
+import { useEffect, useState }    from "react";
 import styled from "styled-components";
 
 const SectionScrollAnimationComponent = styled.section`
@@ -10,6 +10,7 @@ const SectionScrollAnimationComponent = styled.section`
     ${({theme}) => theme.basicWidth};
     position:relative;
 
+    transition:background 0.4s, color 0.4s;
 
     .text-wrap {
         overflow:hidden;
@@ -22,7 +23,7 @@ const SectionScrollAnimationComponent = styled.section`
         width:calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right));
 
         @media screen and (min-width:1024px) {
-            font-size:${({theme}) => theme.typo['size-title-2']};
+            font-size:${({theme}) => theme.typo['size-title-1']};
         }
 
         .position {
@@ -80,8 +81,12 @@ const SectionScrollAnimationComponent = styled.section`
 `
 
 function SectionScrollAnimation(props){
+    const [isRun, setRun] = useState(true);
     useEffect(() => {
-        const scroll = new ScrollAnimation(window, '.section-1 .box')
+        if(isRun){
+            new ScrollAnimation(window, '.section-1 .box');
+            setRun(false);
+        }
     }, []);
     return (
         <SectionScrollAnimationComponent className="section-wrap section-1">
@@ -150,6 +155,7 @@ const AniWrap = styled.div`
         background:#0E0D12;
     }
     >.bg {
+        opacity:0;
         position:absolute;
         top:0;
         width:100%;
@@ -162,9 +168,20 @@ const AniWrap = styled.div`
         top:50%;
         transform:translateY(calc(-50% - 30px));
         padding:0 ${({theme}) => theme.size.wrap};
+        white-space:nowrap;
         p {
-            font-size:${({theme}) => theme.typo['size-title-1']};
+            font-size:${({theme}) => theme.typo['size-title-3']};
+            @media screen and (max-width:320px) {
+                font-size:${({theme}) => theme.typo['size-body-1']};
+            }
+            @media screen and (min-width:480px) and (max-width:739px) {
+                font-size:${({theme}) => theme.typo['size-title-2']};
+            }
+            @media screen and (min-width:740px) {
+                font-size:${({theme}) => theme.typo['size-title-1']};
+            }
 
+            font-family:'Roboto Mono';
             .css-wrap {
                 position:relative;
                 display:inline-block;
@@ -182,28 +199,32 @@ const AniWrap = styled.div`
 `
 
 function Ani(){
+    const [isRun, setRun] = useState(true);
     useEffect(() => {
-        const scroll = new ScrollAnimation(window, '.section-1 .animation-wrap .animation')
+        if(isRun){
+            new ScrollAnimation(window, '.animation-wrap .animation-runner');
+            setRun(false);
+        }
     }, []);
     return (
         <AniWrap className="animation-wrap">
             <div    className="nobg"></div>
-            <div    className="animation bg"
-                    data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
-                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+            <div    className="animation-runner bg"
+                    data-animation-start="<$ if(this.closest('.section-1') === null) return 0; return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ if(this.closest('.section-1') === null) return 0; return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
                     data-animation-0="opacity:0;"
                     data-animation-100="opacity:1;"></div>
-            <div    className="text-box animation " 
-                    data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
-                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+            <div    className="text-box animation-runner" 
+                    data-animation-start="<$ if(this.closest('.section-1') === null) return 0; return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ if(this.closest('.section-1') === null) return 0; return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
                     data-animation-0="color:#fff;"
                     data-animation-100="color:#000;">
                 <p className="">.background &#123;</p>
-                <p className="css-wrap">&nbsp;&nbsp;&nbsp;&nbsp;opacity:<span className="css-wrap"><span className="animation css-input" data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
-                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+                <p className="css-wrap">&nbsp;&nbsp;&nbsp;&nbsp;opacity:<span className="css-wrap"><span className="animation-runner css-input" data-animation-start="<$ if(this.closest('.section-1') === null) return 0; return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ if(this.closest('.section-1') === null) return 0; return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
                     data-animation-0="transform:translateY(0%); opacity:1;"
-                    data-animation-100="transform:translateY(-100%); opacity:0;">0</span><span className="animation css-input" data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
-                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+                    data-animation-100="transform:translateY(-100%); opacity:0;">0</span><span className="animation-runner css-input" data-animation-start="<$ if(this.closest('.section-1') === null) return 0; return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ if(this.closest('.section-1') === null) return 0; return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
                     data-animation-0="transform:translateY(100%); opacity:0;"
                     data-animation-100="transform:translateY(0%); opacity:1;">1</span><span className="css-placeholder">0</span></span>;</p>
                 <p className="">&#125;</p>

@@ -1,9 +1,9 @@
-import React              from 'react';
-import ReactDOM           from 'react-dom';
-import reportWebVitals    from './reportWebVitals';
-import App                from './App';
-import { ThemeProvider }  from 'styled-components';
-import { theme }          from 'assets/style/theme';
+import React                  from 'react';
+import ReactDOM               from 'react-dom';
+import reportWebVitals        from './reportWebVitals';
+import App                    from './App';
+import { ThemeProvider }      from 'styled-components';
+import { theme, themeLight }  from 'assets/style/theme';
 // import registerServiceWorker from './serviceWorker';
 
 ReactDOM.render(

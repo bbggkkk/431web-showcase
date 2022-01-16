@@ -10,14 +10,15 @@ const TitleComponent = styled.div`
     height:100vh;
     overflow:hidden;
     position:relative;
+    padding:0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
+    background:${({theme}) => theme.color.background};
 
     & > div {
         width:100%;
         height:100%;
-        max-width:${({theme}) => theme.basicWidth};
-        margin:0 auto;
+        ${({theme}) => theme.basicWidth};
+        padding:0;
         position:relative;
-        background:${({theme}) => theme.color.background};
     }
 
     .phone {

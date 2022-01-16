@@ -1,27 +1,35 @@
 import { ScrollAnimation } from 'assets/library/scrollAnimation';
 import 'assets/style/guide.scss';
-import Content  from 'components/common/Content';
 import Header   from 'components/common/Header';
 import SectionElementGesture from 'components/Contents/SectionElementGesture';
 import SectionScrollAnimation from 'components/Contents/SectionScrollAnimation';
 import Title    from 'components/main/Title';
 import { useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
+const GlobalStyle = createGlobalStyle`
+    body{
+        background:${({theme}) => theme.color.background};
+        color:${({theme}) => theme.color.text};
+    }
+`;
 const AppWrap = styled.div`
     width:100%;
 `
 
 function App() {
     return (
-        <AppWrap className="App">
-            <Header></Header>
-            <Title></Title>
-            <SectionTitle/>
-            <SectionScrollAnimation/>
-            <SectionElementGesture/>
-            <div style={{height:'200vh'}}></div>
-        </AppWrap>
+        <>
+            <GlobalStyle/>
+            <AppWrap className="App">
+                <Header></Header>
+                <Title></Title>
+                <SectionTitle/>
+                <SectionScrollAnimation/>
+                <SectionElementGesture/>
+                <div style={{height:'200vh'}}></div>
+            </AppWrap>
+        </>
     );
 }
 
@@ -41,6 +49,11 @@ const SectionTitleComponent = styled.section`
 
         font-size:${({theme}) => theme.typo['size-title-1']};
         font-weight:${({theme}) => theme.typo['weight-bold']};
+
+        @media screen and (min-width:1024px) {
+            font-size:${({theme}) => theme.typo['size-head-3']};
+        }
+
     }
 `
 function SectionTitle(){

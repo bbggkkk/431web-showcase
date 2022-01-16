@@ -10,8 +10,10 @@ declare module "styled-components" {
       text: string;
       primary:string;
       tertiary:string;
+      backgroundRgb:string;
     };
     typo:any;
     mode:string;
+    size:any;
   }
 }

@@ -1,5 +1,4 @@
 import styled                   from 'styled-components';
-import { theme }                from 'assets/style/theme';
 import Logo                     from 'components/common/Logo';
 import Button                   from 'components/common/Button';
 
@@ -7,24 +6,26 @@ const HeaderComponent = styled.header`
     height:60px;
     width:100%;
     position:fixed;
+    padding:0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
     z-index:9;
     top:0;
-    background:rgba(${theme.color['tertiary-rgb']},.9);
-    backdrop-filter:blur(6px);
+    background:rgba(${({theme}) => theme.color.backgroundRgb},.92);
+    backdrop-filter:blur(10px);
 
     .box {
-        max-width:${({theme}) => theme.basicWidth};
-        margin:0 auto;
+        ${({theme}) => theme.basicWidth};
+        padding:0;
         height:100%;
         display:flex;
         justify-content:center;
         align-items:center;
         position:relative;
+        color:${({theme}) => theme.color.text};
 
         .logo {
             position:absolute;
             top:50%;
-            left:${theme.size.wrap};
+            left:${({theme}) => theme.size.wrap};
             transform:translateY(-50%);
         }
     
@@ -35,7 +36,7 @@ const HeaderComponent = styled.header`
 
             position:absolute;
             top:50%;
-            right:${theme.size.wrap};
+            right:${({theme}) => theme.size.wrap};
             transform:translateY(-50%);
         }
     }
@@ -45,7 +46,7 @@ function Content() {
     return (
         <HeaderComponent>
             <div className="box">
-                <Logo className="logo" color="#fff"/>
+                <Logo className="logo"/>
                 <div className="menu-wrapper"></div>
                 <div className="button-wrapper">
                     <Button size="small" type="on">작업물 보기</Button>

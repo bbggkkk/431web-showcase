@@ -1,4 +1,3 @@
-import { theme } from 'assets/style/theme';
 import styled            from 'styled-components';
 
 function Phone({width = '360px', height = '680px', ...props}){

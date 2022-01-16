@@ -7,21 +7,23 @@ import styled from "styled-components";
 const SectionScrollAnimationComponent = styled.section`
     width:100%;
     height:200vh;
-    max-width:${({theme}) => theme.basicWidth};
-    margin:0 auto;
+    ${({theme}) => theme.basicWidth};
     position:relative;
 
 
     .text-wrap {
         overflow:hidden;
         height:100%;
-        color:#fff;
         font-size:${({theme}) => theme.typo['size-title-3']};
         font-weight:${({theme}) => theme.typo['weight-bold']};
         position:absolute;
         top:0;
         padding:0 24px;
-        width:100%;
+        width:calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right));
+
+        @media screen and (min-width:1024px) {
+            font-size:${({theme}) => theme.typo['size-title-2']};
+        }
 
         .position {
             transform:translateY(60px);
@@ -33,6 +35,12 @@ const SectionScrollAnimationComponent = styled.section`
             font-weight:${({theme}) => theme.typo['weight-black']};
             font-size:${({theme}) => theme.typo['size-head-2']};
         }
+    
+        @media screen and (min-width:1024px) {
+            .position.title {
+                font-size:${({theme}) => theme.typo['size-head-1']};
+            }
+        }
 
         .goto-git {
             margin-top:16px;
@@ -40,11 +48,12 @@ const SectionScrollAnimationComponent = styled.section`
     }
 
     .wrap {
-        pointer-events:none;
+        user-select:none;
+        /* pointer-events:none; */
         z-index:1;
         position:sticky;
         top:calc(50vh + 60px);
-        height:calc(50vh - 60px);
+        height:calc(50vh);
 
         .content {
             padding:0 24px;
@@ -61,6 +70,10 @@ const SectionScrollAnimationComponent = styled.section`
             .phone-wrap {
                 position:relative;
                 overflow:hidden;
+
+                .screen {
+                    overflow:hidden;
+                }
             }
         }
     }
@@ -129,21 +142,71 @@ const AniWrap = styled.div`
     width:100%;
     height:50%;
     position:relative;
-    background:green;
+    overflow:hidden;
+
+    >.nobg {
+        width:100%;
+        height:100%;
+        background:#0E0D12;
+    }
+    >.bg {
+        position:absolute;
+        top:0;
+        width:100%;
+        height:200%;
+        background:no-repeat center / cover url(https://images.unsplash.com/photo-1641996613400-b05123d1051b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1417&q=80);
+    }
+
+    >.text-box {
+        position:absolute;
+        top:50%;
+        transform:translateY(calc(-50% - 30px));
+        padding:0 ${({theme}) => theme.size.wrap};
+        p {
+            font-size:${({theme}) => theme.typo['size-title-1']};
+
+            .css-wrap {
+                position:relative;
+                display:inline-block;
+            }
+            .css-input {
+                position:absolute;
+            }
+            .css-placeholder {
+                user-select:none;
+                pointer-events:none;
+                visibility:hidden;
+            }
+        }
+    }
 `
 
 function Ani(){
     useEffect(() => {
-        const scroll = new ScrollAnimation(window, '.section-1 .animation .box')
+        const scroll = new ScrollAnimation(window, '.section-1 .animation-wrap .animation')
     }, []);
     return (
-        <AniWrap className="animation">
-            <div    className="box"
+        <AniWrap className="animation-wrap">
+            <div    className="nobg"></div>
+            <div    className="animation bg"
                     data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
                     data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
                     data-animation-0="opacity:0;"
-                    data-animation-100="opacity:1;">
-                test
+                    data-animation-100="opacity:1;"></div>
+            <div    className="text-box animation " 
+                    data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+                    data-animation-0="color:#fff;"
+                    data-animation-100="color:#000;">
+                <p className="">.background &#123;</p>
+                <p className="css-wrap">&nbsp;&nbsp;&nbsp;&nbsp;opacity:<span className="css-wrap"><span className="animation css-input" data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+                    data-animation-0="transform:translateY(0%); opacity:1;"
+                    data-animation-100="transform:translateY(-100%); opacity:0;">0</span><span className="animation css-input" data-animation-start="<$ return Math.round(this.closest('.section-1').offsetTop); $>"
+                    data-animation-end="<$ return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
+                    data-animation-0="transform:translateY(100%); opacity:0;"
+                    data-animation-100="transform:translateY(0%); opacity:1;">1</span><span className="css-placeholder">0</span></span>;</p>
+                <p className="">&#125;</p>
             </div>
         </AniWrap>
     )

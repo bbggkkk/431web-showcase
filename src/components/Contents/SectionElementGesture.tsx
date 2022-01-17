@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const SectionElementGestureComponent = styled.section`
     width:100%;
-    height:150vh;
+    height:calc(150vh + 120px);
     ${({theme}) => theme.basicWidth};
     position:relative;
     z-index:0;

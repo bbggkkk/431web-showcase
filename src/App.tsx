@@ -27,6 +27,7 @@ const AppWrap = styled.div`
 
 function App() {
     const [isDark, setIsDark] = useState(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? true : !window.matchMedia ? true : false);
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', isDark ? '#1A2024' : '#fff');
     return (
         <ThemeProvider theme={isDark ? theme : themeLight}>
             <GlobalStyle/>

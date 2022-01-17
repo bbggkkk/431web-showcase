@@ -9,6 +9,8 @@ const SectionScrollAnimationComponent = styled.section`
     height:200vh;
     ${({theme}) => theme.basicWidth};
     position:relative;
+    z-index:1;
+    background:${({theme}) => theme.color.background};
 
     transition:background 0.4s, color 0.4s;
 

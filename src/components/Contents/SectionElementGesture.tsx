@@ -9,7 +9,8 @@ const SectionElementGestureComponent = styled.section`
     height:150vh;
     ${({theme}) => theme.basicWidth};
     position:relative;
-
+    z-index:0;
+    
     .wrapper {
         position:relative;
         height:150vh;
@@ -60,7 +61,7 @@ const SectionElementGestureComponent = styled.section`
         /* pointer-events:none; */
         z-index:1;
         position:sticky;
-        top:0px;
+        top:120px;
         height:calc(50vh);
 
         .content {
@@ -77,7 +78,6 @@ const SectionElementGestureComponent = styled.section`
             }
             .phone-wrap {
                 position:relative;
-                overflow:hidden;
 
                 .screen {
                     overflow:hidden;
@@ -85,14 +85,13 @@ const SectionElementGestureComponent = styled.section`
 
                 .phone {
                     height:100%;
-                    top:-100%;
+                    top:calc(-100% - 120px);
                     position:relative;
-                    /* transform:translateY(-100%); */
 
                     .screen-setter {
                         height:50%;
                         position:relative;
-                        top:50%;
+                        top:calc(50% + 120px);
                         /* transform:translateY(100%); */
                     }
                 }

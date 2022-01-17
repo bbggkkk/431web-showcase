@@ -11,18 +11,18 @@ z-index:1;
 position:relative;
 
     .wrap {
-        ${({theme}) => theme.basicWidth};
+        position:absolute;
+        top:0;
+        width:100%;
         .text-wrap {
-            // width:100%;
+            ${({theme}) => theme.basicWidth};
             font-size:${({theme}) => theme.typo['size-title-3']};
             font-weight:${({theme}) => theme.typo['weight-bold']};
-            position:absolute;
-            top:0;
-            width:calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right));
+            width:100%;
             
             .position {
-                overflow:hidden;
                 padding:0 24px;
+                overflow:hidden;
                 transition:color 0.4s;
                 color:#fff;
                 // color:${({theme}) => theme.color.text};

@@ -16,6 +16,7 @@ const SectionScrollAnimationComponent = styled.section`
 
     .text-wrap {
         overflow:hidden;
+        transform:translateY(-60px);
         height:100%;
         font-size:${({theme}) => theme.typo['size-title-3']};
         font-weight:${({theme}) => theme.typo['weight-bold']};
@@ -56,11 +57,11 @@ const SectionScrollAnimationComponent = styled.section`
         z-index:1;
         position:sticky;
         top:calc(50vh + 60px);
-        height:calc(50vh);
+        height:50vh;
 
         .content {
             padding:0 24px;
-            height:100%;
+            height:200%;
 
             display:flex;
             flex-direction:column;
@@ -101,7 +102,7 @@ function SectionScrollAnimation(props){
                         data-animation-end="<$ return Math.round(this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight); $>"
                         data-animation-0="transform:translateY(10%);"
                         data-animation-100="transform:translateY(-10%);">
-                        <Phone width="100%" height="200%">
+                        <Phone width="100%" height="100%">
                             <Ani/>
                         </Phone>
                     </div>
@@ -149,7 +150,7 @@ const AniWrap = styled.div`
     width:100%;
     height:50%;
     position:relative;
-    overflow:hidden;
+    // overflow:hidden;
 
     >.nobg {
         width:100%;
@@ -168,7 +169,7 @@ const AniWrap = styled.div`
     >.text-box {
         position:absolute;
         top:50%;
-        transform:translateY(calc(-50% - 30px));
+        transform:translateY(-50%);
         padding:0 ${({theme}) => theme.size.wrap};
         white-space:nowrap;
         p {

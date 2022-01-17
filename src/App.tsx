@@ -9,6 +9,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import { ThemeProvider }      from 'styled-components';
 import { theme, themeLight }  from 'assets/style/theme';
+import RecentWork from 'components/Contents/RecentWork';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -37,6 +38,7 @@ function App() {
                 <SectionTitle/>
                 <SectionScrollAnimation/>
                 <SectionElementGesture/>
+                <RecentWork/>
                 <div style={{height:'200vh'}}></div>
             </AppWrap>
         </ThemeProvider>

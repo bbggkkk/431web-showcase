@@ -10,7 +10,7 @@ const SectionElementGestureComponent = styled.section`
     ${({theme}) => theme.basicWidth};
     position:relative;
     z-index:0;
-    
+
     .wrapper {
         position:relative;
         height:150vh;
@@ -106,11 +106,16 @@ function SectionElementGesture(props){
     useEffect(() => {
         if(isRun){
             new ScrollAnimation(window, '.section-2 .box');
+            new ScrollAnimation(window, '.section-2');
             setRun(false);
         }
     }, []);
     return (
-        <SectionElementGestureComponent className="section-wrap section-2">
+        <SectionElementGestureComponent className="section-wrap section-2"
+                data-animation-start="<$ return this.offsetTop - 160; $>"
+                data-animation-end="<$ return this.offsetTop - 159; $>"
+                data-animation-0="z-index:0;"
+                data-animation-100="z-index:1;">
             <div className="wrap">
                 <div className="content">
                     <div className="phone-wrap"

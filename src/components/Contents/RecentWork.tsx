@@ -39,7 +39,7 @@ position:relative;
     }
     .background {
         transform:translateY(-25%);
-        position:sticky;
+        position:absolute;
         top:0px;
         width:100%;
         height:200vh;
@@ -63,8 +63,8 @@ function RecentWork({width = '360px', height = '680px', ...props}){
                  data-animation-start="<$ return Math.round(this.closest('.publish-wrap').offsetTop - (window.outerHeight/1.5)); $>"
                  data-animation-end="<$ return Math.round(this.closest('.publish-wrap').offsetTop + this.closest('.publish-wrap').offsetHeight - (window.outerHeight/4)); $>"
                  data-animation-0="clip-path:circle(0%);"
-                 data-animation-25="clip-path:circle(72%);"
-                 data-animation-75="clip-path:circle(72%);"
+                 data-animation-45="clip-path:circle(72%);"
+                 data-animation-55="clip-path:circle(72%);"
                  data-animation-100="clip-path:circle(0%);"></div>
             <div className="wrap">
                 <div className="text-wrap">

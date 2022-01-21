@@ -10,6 +10,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { ThemeProvider }      from 'styled-components';
 import { theme, themeLight }  from 'assets/style/theme';
 import RecentWork from 'components/Contents/RecentWork';
+import Career from 'components/Contents/Career';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -34,11 +35,21 @@ function App() {
             <GlobalStyle/>
             <AppWrap className="App">
                 <Header setTheme={setIsDark} isDark={isDark}></Header>
-                <Title></Title>
-                <SectionTitle/>
+                <Title/>
+                <SectionTitle>
+                    <p>제가 만든</p>
+                    <p>작업물들을</p>
+                    <p>소개합니다</p>
+                </SectionTitle>
                 <SectionScrollAnimation/>
                 <SectionElementGesture/>
                 <RecentWork/>
+                <SectionTitle>
+                    <p>저는</p>
+                    <p>이런 일들을</p>
+                    <p>해왔습니다</p>
+                </SectionTitle>
+                <Career/>
                 <div style={{height:'200vh'}}></div>
             </AppWrap>
         </ThemeProvider>
@@ -48,7 +59,8 @@ function App() {
 
 const SectionTitleComponent = styled.section`
     position:relative;
-    height:50vh;
+    height:50vw;
+    min-height:50vh;
     background:${({theme}) => theme.color.background};
     color:${({theme}) => theme.mode === 'dark' ? '#C3C6CD' : '#666E7F'};
 
@@ -70,7 +82,7 @@ const SectionTitleComponent = styled.section`
 
     }
 `
-function SectionTitle(){
+function SectionTitle(props){
     const [isRun, setRun] = useState(true);
     useEffect(() => {
         if(isRun){
@@ -81,15 +93,13 @@ function SectionTitle(){
     return (
         <SectionTitleComponent className="section-title">
             <div className="box"
-                    data-animation-start="0"
-                    data-animation-end="<$ return Math.round(window.outerHeight*1.5); $>"
+                    data-animation-start="<$ return Math.round(this.closest('.section-title').offsetTop - window.outerHeight); $>"
+                    data-animation-end="<$ return Math.round(this.closest('.section-title').offsetTop + this.closest('.section-title').offsetHeight); $>"
                     data-animation-0="opacity:0; transform:translate(-50%, calc(-25vh - 0%));"
                     data-animation-40="opacity:1;"
                     data-animation-60="opacity:1;"
                     data-animation-100="opacity:0; transform:translate(-50%, calc(25vh - 100%));">
-                <p>제가 만든</p>
-                <p>작업물들을</p>
-                <p>소개합니다</p>
+                {props.children}
             </div>
         </SectionTitleComponent>
     )

@@ -136,7 +136,7 @@ function Title() {
                     <p>431Web</p>
                     <p>프론트엔드 공방</p>
                     <div className="button-wrap">
-                        <div onClick={() => window.scrollTo(0, window.outerHeight - window.outerHeight/4)}>
+                        <div onClick={() => window.scrollTo({left:0, top:window.outerHeight - window.outerHeight/4 + 60, behavior:'smooth'})}>
                             <Button type="on">
                                 <svg className="icon" id="_-92986742912491551inbox_black_24dp" data-name="-92986742912491551inbox_black_24dp" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path id="패스_4" data-name="패스 4" d="M0,0H24V24H0Z" fill="none"/>

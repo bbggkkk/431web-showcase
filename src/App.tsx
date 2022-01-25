@@ -11,6 +11,7 @@ import { ThemeProvider }      from 'styled-components';
 import { theme, themeLight }  from 'assets/style/theme';
 import RecentWork from 'components/Contents/RecentWork';
 import Career from 'components/Contents/Career';
+import Stack from 'components/Contents/Stack';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -44,6 +45,11 @@ function App() {
                 <SectionScrollAnimation/>
                 <SectionElementGesture/>
                 <RecentWork/>
+                <SectionTitle>
+                    <p>제가 다룰 수 있는</p>
+                    <p>기술 스택입니다</p>
+                </SectionTitle>
+                <Stack/>
                 <SectionTitle>
                     <p>저는</p>
                     <p>이런 일들을</p>

@@ -68,6 +68,10 @@ const CareerItemComponent = styled.div`
     padding:24px 16px;
     background:${({theme}) => theme.mode === 'dark' ? theme.typo['color-800'] : theme.typo['color-100']};
     transition:background 0.4s;
+
+    > * {
+        transition:color 0.4s;
+    }
 `
 function CareerItem(props){
     

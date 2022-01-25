@@ -7,7 +7,7 @@ import imgLaptop  from "assets/images/laptop-set.jpg";
 
 
 const RecentWorkComponent = styled.section`
-    transform:translateY(-100vh);
+    top:-100vh;
     margin-bottom:-100vh;
     width:100%;
     height:300vh;
@@ -42,9 +42,8 @@ const RecentWorkComponent = styled.section`
 
     }
     .background {
-        transform:translateY(0%);
         position:sticky;
-        top:100vh;
+        top:0px;
         width:100%;
         height:100vh;
         transition:opacity 0.4s;
@@ -64,8 +63,8 @@ function RecentWork({width = '360px', height = '680px', ...props}){
     return (
         <RecentWorkComponent className="publish-wrap">
             <div className="background box"
-                 data-animation-start="<$ return Math.round(this.closest('.publish-wrap').offsetTop - window.outerHeight); $>"
-                 data-animation-end="<$ return Math.round(this.closest('.publish-wrap').offsetTop + (window.outerHeight/2)); $>"
+                 data-animation-start="<$ return Math.round(this.closest('.publish-wrap').offsetTop); $>"
+                 data-animation-end="<$ return Math.round(this.closest('.publish-wrap').offsetTop + (window.outerHeight/0.75)); $>"
                  data-animation-0="clip-path:polygon(50% 0%, 0% 0%, 0% 0%); opacity:1;"
                  data-animation-25="clip-path:polygon(50% -100%, 200% 200%, -100% 200%);"
                  data-animation-75="opacity:1;"
@@ -76,12 +75,10 @@ function RecentWork({width = '360px', height = '680px', ...props}){
                 <div className="wrap">
                     <div className="text-wrap">
                         <div className="position box"
-                            data-animation-start="<$ return Math.round(this.closest('.publish-wrap').offsetTop - window.outerHeight); $>"
-                            data-animation-end="<$ return Math.round(this.closest('.publish-wrap').offsetTop + window.outerHeight); $>"
-                            data-animation-0="opacity:0; transform:translate(0%, calc(0vh - 0%));"
-                            data-animation-40="opacity:1;"
-                            data-animation-60="opacity:1;"
-                            data-animation-100="opacity:0; transform:translate(0%, calc(100vh - 100%));">
+                            data-animation-start="<$ return Math.round(this.closest('.publish-wrap').offsetTop); $>"
+                            data-animation-end="<$ return Math.round(this.closest('.publish-wrap').offsetTop + (window.outerHeight/0.5)); $>"
+                            data-animation-0="transform:translate(0%, calc(0vh - 0%));"
+                            data-animation-100="transform:translate(0%, calc(100vh - 100%));">
                             <p className="title">Publishing</p>
                             <p>퍼블리싱 포트폴리오</p>
                             <a href="//portfolio.431web.com" target="_blank">

@@ -20,7 +20,8 @@ function Career(){
             <div className="wrapper">
                 <div className="spacer">
                     <CareerItem>
-                        <p>HI</p>
+                        <p>널리소프트</p>
+                        <p>2020.02~</p>
                     </CareerItem>
                 </div>
             </div>
@@ -34,7 +35,8 @@ export default Career;
 const CareerItemComponent = styled.div`
     border-radius:32px;
     padding:16px;
-    background:#f2f2f2;
+    background:${({theme}) => theme.mode === 'dark' ? theme.typo['color-800'] : theme.typo['color-100']};
+    transition:background 0.4s;
 `
 function CareerItem(props){
     

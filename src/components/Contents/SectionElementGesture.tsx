@@ -210,6 +210,7 @@ const AniWrap = styled.div`
                 transform:rotate(-45deg);
                 width:100%;
                 height:100%;
+                transition:fill 0.4s;
                 fill:${({theme}) => theme.color.text};
             }
         }

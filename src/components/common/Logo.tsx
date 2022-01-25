@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-function Logo(props:any) {
     
-    const LogoSvg = styled.div `
-        > svg * {
-            transition:fill 0.4s;
-            fill:${({theme}) => theme.color.text};
-        }
-    `
+const LogoSvg = styled.div `
+    svg {
+        transition:fill 0.4s;
+        fill:${({theme}) => theme.color.text};
+    }
+`
+
+function Logo(props:any) {
 
     return (
         <LogoSvg>

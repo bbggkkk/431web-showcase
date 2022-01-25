@@ -3,10 +3,12 @@ import Button from 'components/common/Button';
 import { useEffect, useState } from 'react';
 import styled            from 'styled-components';
 
+import imgLaptop  from "assets/images/laptop-set.jpg";
+
 
 const RecentWorkComponent = styled.section`
 width:100%;
-height:100vh;
+height:125vh;
 z-index:1;
 position:relative;
 
@@ -43,8 +45,9 @@ position:relative;
         top:0px;
         width:100%;
         height:200vh;
-        transition:background 0.4s;
-        background:no-repeat center / cover url(https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80);
+        transition:opacity 0.4s;
+        background:no-repeat center / cover url(${imgLaptop});
+        ${({theme}) => theme.mode === 'dark' ? 'opacity:0.5;' : ''}
         // background:${({theme}) => theme.mode === 'dark' ? theme.color.primary : theme.color.secondary};
     }
 `;

@@ -4,6 +4,9 @@ import Phone from "components/common/Phone";
 import { useEffect, useState }    from "react";
 import styled from "styled-components";
 
+import imgSpace from "assets/images/space-set.jpg";
+import imgSnow  from "assets/images/snow-set.jpg";
+
 const SectionElementGestureComponent = styled.section`
     width:100%;
     height:200vh;
@@ -185,7 +188,9 @@ const AniWrap = styled.div`
         top:0;
         width:100%;
         height:100%;
-        background:no-repeat center / cover url(https://images.unsplash.com/photo-1641996613400-b05123d1051b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1417&q=80);
+        background:no-repeat center / cover url(${({theme}) => theme.mode === 'dark' ? imgSpace : imgSnow});
+        // background:no-repeat center / cover url(https://images.unsplash.com/photo-1454789548928-9efd52dc4031);
+        // background:no-repeat center / cover url(https://images.unsplash.com/photo-1641996613400-b05123d1051b);
     }
 
     .animation-box {

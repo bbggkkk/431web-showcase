@@ -4,6 +4,9 @@ import Phone from "components/common/Phone";
 import { useEffect, useState }    from "react";
 import styled from "styled-components";
 
+import imgSpace from "assets/images/space-set.jpg";
+import imgSnow  from "assets/images/snow-set.jpg";
+
 const SectionScrollAnimationComponent = styled.section`
     width:100%;
     height:200vh;
@@ -155,7 +158,7 @@ const AniWrap = styled.div`
     >.nobg {
         width:100%;
         height:100%;
-        background:#0E0D12;
+        // background:#0E0D12;
     }
     >.bg {
         opacity:0;
@@ -163,7 +166,9 @@ const AniWrap = styled.div`
         top:0;
         width:100%;
         height:200%;
-        background:no-repeat center / cover url(https://images.unsplash.com/photo-1641996613400-b05123d1051b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1417&q=80);
+        background:no-repeat center / cover url(${({theme}) => theme.mode === 'dark' ? imgSpace : imgSnow});
+        // background:no-repeat center / cover url(https://images.unsplash.com/photo-1454789548928-9efd52dc4031);
+        // background:no-repeat center / cover url(https://images.unsplash.com/photo-1641996613400-b05123d1051b);
     }
 
     >.text-box {
@@ -220,8 +225,8 @@ function Ani(){
             <div    className="text-box animation-runner" 
                     data-animation-start="<$ if(this.closest('.section-1') === null) return 0; return Math.round(this.closest('.section-1').offsetTop); $>"
                     data-animation-end="<$ if(this.closest('.section-1') === null) return 0; return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"
-                    data-animation-0="color:#fff;"
-                    data-animation-100="color:#000;">
+                    data-animation-0="opacity:1;"
+                    data-animation-100="opacity:0;">
                 <p className="">.background &#123;</p>
                 <p className="css-wrap">&nbsp;&nbsp;&nbsp;&nbsp;opacity:<span className="css-wrap"><span className="animation-runner css-input" data-animation-start="<$ if(this.closest('.section-1') === null) return 0; return Math.round(this.closest('.section-1').offsetTop); $>"
                     data-animation-end="<$ if(this.closest('.section-1') === null) return 0; return Math.round( this.closest('.section-1').offsetTop + this.closest('.section-1').offsetHeight/3 ); $>"

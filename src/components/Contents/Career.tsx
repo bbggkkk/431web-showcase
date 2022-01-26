@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const CareerComponent = styled.section`
     width:100%;
-    height:200vh;
 
     .wrapper {
         ${({theme}) => theme.basicWidth};
@@ -13,7 +12,7 @@ const CareerComponent = styled.section`
             gap:8px;
             grid-template-columns:1fr;
 
-            @media screen and (min-width:480px) and (max-width:739px) {
+            @media screen and (min-width:480px) {
                 grid-template-columns:1fr 1fr;
             }
 

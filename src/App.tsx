@@ -26,6 +26,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 const AppWrap = styled.div`
     width:100%;
+
+    .end {
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
 `
 
 function App() {
@@ -56,7 +63,9 @@ function App() {
                     <p>해왔습니다</p>
                 </SectionTitle>
                 <Career/>
-                <div style={{height:'200vh'}}></div>
+                <div className="end">
+                    <p className="t-title-1">END</p>
+                </div>
             </AppWrap>
         </ThemeProvider>
     );

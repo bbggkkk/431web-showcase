@@ -9,6 +9,13 @@ const CareerComponent = styled.section`
 
         .spacer {
             padding:0 24px;
+            display:grid;
+            gap:8px;
+            grid-template-columns:1fr;
+
+            @media screen and (min-width:480px) and (max-width:739px) {
+                grid-template-columns:1fr 1fr;
+            }
 
             .title {
                 margin-bottom:8px;

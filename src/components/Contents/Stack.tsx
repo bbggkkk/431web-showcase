@@ -11,6 +11,10 @@ const StackComponent = styled.div`
             gap:8px;
             grid-template-columns:1fr 1fr;
 
+            @media screen and (min-width:1024px) {
+                grid-template-columns:1fr 1fr 1fr;
+            }
+
 
             .stack-name {
                 position:absolute;

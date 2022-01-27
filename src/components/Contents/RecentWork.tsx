@@ -12,7 +12,7 @@ const RecentWorkComponent = styled.section`
     margin-bottom:-100vh;
     width:100%;
     height:200vh;
-    z-index:1;
+    z-index:0;
     position:relative;
 
     .wrap {

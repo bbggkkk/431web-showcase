@@ -32,6 +32,12 @@ const AppWrap = styled.div`
         display:flex;
         justify-content:center;
         align-items:center;
+
+        text-align:center;
+
+        p:nth-child(1) {
+            margin-bottom:24px;
+        }
     }
 `
 
@@ -64,7 +70,11 @@ function App() {
                 </SectionTitle>
                 <Career/>
                 <div className="end">
-                    <p className="t-title-1">END</p>
+                    <div>
+                        <p className="t-title-1">END</p>
+                        <p className="t-body-1">서성일</p>
+                        <p className="t-body-1">ss1431ml@gmail.com</p>
+                    </div>
                 </div>
             </AppWrap>
         </ThemeProvider>

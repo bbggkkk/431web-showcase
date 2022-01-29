@@ -51,7 +51,8 @@ const HeaderComponent = styled.header`
                 fill:${({theme}) => theme.color.secondary};
             }
             .light-mode {
-                fill:${({theme}) => theme.color.tertiary};
+                fill:${({theme}) => theme.color.secondary};
+                // fill:${({theme}) => theme.color.tertiary};
             }
         }
     }

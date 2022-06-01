@@ -12,6 +12,7 @@ import { theme, themeLight }  from 'assets/style/theme';
 import RecentWork from 'components/Contents/RecentWork';
 import Career from 'components/Contents/Career';
 import Stack from 'components/Contents/Stack';
+import Section431Memo from 'components/Contents/Section431Memo';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -38,6 +39,16 @@ const AppWrap = styled.div`
         p:nth-child(1) {
             margin-bottom:24px;
         }
+
+        p a {
+            display:flex;
+            align-items:center;
+            gap:4px;
+
+            svg {
+                transform:translateY(1px);
+            }
+        }
     }
 `
 
@@ -55,6 +66,7 @@ function App() {
                     <p>작업물들을</p>
                     <p>소개합니다</p>
                 </SectionTitle>
+                <Section431Memo/>
                 <SectionScrollAnimation/>
                 <SectionElementGesture/>
                 <RecentWork/>
@@ -73,7 +85,7 @@ function App() {
                     <div>
                         <p className="t-title-1">END</p>
                         <p className="t-body-1">서성일</p>
-                        <p className="t-body-1">ss1431ml@gmail.com</p>
+                        <p className="t-body-1"><a href="mailto:ss1431ml@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>ss1431ml@gmail.com</a></p>
                     </div>
                 </div>
             </AppWrap>

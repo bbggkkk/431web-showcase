@@ -6,7 +6,6 @@ import SectionScrollAnimation from 'components/Contents/SectionScrollAnimation';
 import Title    from 'components/main/Title';
 import { useEffect, useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-
 import { ThemeProvider }      from 'styled-components';
 import { theme, themeLight }  from 'assets/style/theme';
 import RecentWork from 'components/Contents/RecentWork';
